@@ -188,7 +188,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: b587a0fb655c7694e8c9d9738071ef04, type: 2}
+  - {fileID: 2100000, guid: ec35f5855dd76124a80d50b9b0744446, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -267,8 +267,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   namePlayer: Box Birdy
+  lifePlayer: 100
+  changeLife: 10
+  speedCuration: 10
+  speedPlayer: 20
   position1: {x: -1.65, y: -0.219, z: -6.22}
-  changePosition: {x: 0, y: 0.001, z: 0.01}
+  changePosition: {x: 0, y: 0.01, z: 0.1}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -606,7 +610,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 3940a81607c2fd643b22de2c4b05bc3c, type: 2}
+  - {fileID: 2100000, guid: ec35f5855dd76124a80d50b9b0744446, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -688,7 +692,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: ae4cb93c6a93a224787467ff45309d4a, type: 2}
+  - {fileID: 2100000, guid: d9c30acc9874c7947b792ab50166485e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -797,7 +801,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: b587a0fb655c7694e8c9d9738071ef04, type: 2}
+  - {fileID: 2100000, guid: ec35f5855dd76124a80d50b9b0744446, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -879,7 +883,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: d2a607aade8f9fc41abd50195c7f6d1f, type: 2}
+  - {fileID: 2100000, guid: 4cd4d07305523924c864b8bfa1cde7fc, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -937,7 +941,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   positionBox: {x: 2, y: 0.5, z: -2.4}
   scaleBox: {x: 1, y: 1, z: 1}
-  changePositionBox: {x: 0, y: 0, z: 0.01}
+  speedBox: 10
+  changePositionBox: {x: 0, y: 0, z: 0.1}
   changeScaleBox: {x: 0.001, y: 0.001, z: 0.001}
 --- !u!1 &1455470068
 GameObject:
@@ -1005,7 +1010,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 47d95f260032e5d4eadd165b4bd40152, type: 2}
+  - {fileID: 2100000, guid: 3ab7007c9fe8d4146903f6f80fa961b0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1100,7 +1105,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 434f21823e7aad94ca1dde86a284e9cf, type: 2}
+  - {fileID: 2100000, guid: 3580a11a9e1d81540be0fc40162ff411, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1227,7 +1232,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 434f21823e7aad94ca1dde86a284e9cf, type: 2}
+  - {fileID: 2100000, guid: ec35f5855dd76124a80d50b9b0744446, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
