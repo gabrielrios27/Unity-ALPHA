@@ -16,7 +16,7 @@ public class flyBox : MonoBehaviour
     void Start()
     {
         transform.position = position1;
-  
+        print("La vida inicial es " + lifePlayer);
     }
 
     // Update is called once per frame
