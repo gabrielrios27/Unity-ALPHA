@@ -12,12 +12,6 @@ public class GeneratorController : MonoBehaviour
 
     void Start()
     {
-        //Instantiate(enemyPrefab, transform);
-        //Instantiate(enemyPrefab, transform.position, enemyPrefab.transform.rotation);
-        //Debug.Log(Quaternion.identity);
-        //Instantiate(enemyPrefab, transform.position, Quaternion.identity);
-        //int enemyIndex = Random.Range(0, enemyPrefabs.Length);
-        //Instantiate(enemyPrefabs[enemyIndex], transform.position, enemyPrefabs[enemyIndex].transform.rotation);
         InvokeRepeating("SpawnEnemy", startDelay, spawnInterval);
     }
 
