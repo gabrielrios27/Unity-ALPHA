@@ -9,7 +9,7 @@ public class Bullet : MonoBehaviour
     public float speedBullet = 10f;
     public Vector3 directionBullet = new Vector3(0, 0, 1f);
     public float damageBullet = 5;
-    
+    public float lifeBullet = 3f;
 
     // Start is called before the first frame update
     void Start()
@@ -20,6 +20,17 @@ public class Bullet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(speedBullet * Time.deltaTime * directionBullet);
+        destroyBullet(directionBullet);
+    }
+    private void MoveBullet(Vector3 direction){
+        transform.Translate(speedBullet * Time.deltaTime * direction);
+    }
+    private void destroyBullet(Vector3 direction){
+        lifeBullet -= Time.deltaTime;
+        if(lifeBullet > 0){
+            MoveBullet(direction);
+        }else{
+            Destroy(gameObject);
+        }
     }
 }
