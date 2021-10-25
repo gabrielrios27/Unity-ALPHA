@@ -11,7 +11,7 @@ public class GunController : MonoBehaviour
     public float coolDown = 0.5f;
     public float timePass=0;
     public bool isShoot= false;
-    public bool isDuplicated= false;
+  
     
     // Start is called before the first frame update
     void Start()
@@ -33,17 +33,9 @@ public class GunController : MonoBehaviour
             timePass=0;
         }
         
-        if(Input.GetKeyDown(KeyCode.Space) && !isDuplicated){
-            prefabBullet.transform.localScale += scaleChange;
-            isDuplicated=true;
-            Debug.Log(prefabBullet.transform.localScale);
-            Debug.Log(isDuplicated);
+        if(Input.GetKeyDown(KeyCode.Space)){
+            prefabBullet.transform.localScale += prefabBullet.transform.localScale;
         }
-        if(Input.GetKeyDown(KeyCode.Space) && isDuplicated){
-            prefabBullet.transform.localScale -= scaleChange;
-            isDuplicated=false;
-            Debug.Log(prefabBullet.transform.localScale);
-            Debug.Log(isDuplicated);
-        }
+        
     }
 }
