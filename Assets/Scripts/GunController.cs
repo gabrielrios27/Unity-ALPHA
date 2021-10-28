@@ -5,6 +5,7 @@ using UnityEngine;
 public class GunController : MonoBehaviour
 {
     public Vector3 spawnPosition= new Vector3(0.79f,1.718f,-1.934f);
+    public GameObject gunPosition;
     public GameObject prefabBullet;
     private Vector3 scaleChange = new Vector3(0.1f, 0.1f, 0.4f);
     
@@ -23,7 +24,7 @@ public class GunController : MonoBehaviour
     {
         if(Input.GetMouseButtonDown(0) && !isShoot){
             isShoot=true;
-            Instantiate(prefabBullet,spawnPosition,prefabBullet.transform.rotation);
+            Instantiate(prefabBullet,gunPosition.transform.position ,prefabBullet.transform.rotation);
         }
         if(isShoot){
             timePass+=Time.deltaTime;
