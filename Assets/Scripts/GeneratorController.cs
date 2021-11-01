@@ -12,7 +12,7 @@ public class GeneratorController : MonoBehaviour
     [SerializeField] private Difficulties difficulty;
     private float howEasy = 3f;
     private float howHard = 2f;
-
+    private int enemyIndex = 0;
     void Start()
     {
         SwitchDifficulty();
@@ -25,7 +25,7 @@ public class GeneratorController : MonoBehaviour
     }
     void SpawnEnemy()
     {
-        int enemyIndex = Random.Range(0, enemyPrefabs.Length);
+        // int enemyIndex = Random.Range(0, enemyPrefabs.Length);
         Instantiate(enemyPrefabs[enemyIndex], transform.position, enemyPrefabs[enemyIndex].transform.rotation);
     }
     void SwitchDifficulty(){
@@ -33,12 +33,15 @@ public class GeneratorController : MonoBehaviour
         {
             case Difficulties.Easy:
                 InvokeRepeating("SpawnEnemy", startDelay + howEasy, spawnInterval + howEasy);
+                enemyIndex = 0;
                 break;
             case Difficulties.Normal:
                 InvokeRepeating("SpawnEnemy", startDelay, spawnInterval);
+                enemyIndex = 0;
                 break;
             case Difficulties.Hard:
                 InvokeRepeating("SpawnEnemy", startDelay - howHard, spawnInterval - howHard);
+                enemyIndex = 1;
                 break;
             default:
                 Debug.Log("Error! la dificultad elegida no se encuentra");

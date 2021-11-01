@@ -13,19 +13,23 @@ public class GunController : MonoBehaviour
     public float timePass=0;
     public bool isShoot= false;
   
+    private GameObject player;
     
     // Start is called before the first frame update
     void Start()
     {
+        player = GameObject.Find("Player");
     }
 
     // Update is called once per frame
     void Update()
     {
+        Quaternion rotationPlayer= player.transform.rotation;
         if(Input.GetMouseButtonDown(0) && !isShoot){
             isShoot=true;
-            Instantiate(prefabBullet,gunPosition.transform.position ,prefabBullet.transform.rotation);
-        }
+            Instantiate(prefabBullet,gunPosition.transform.position , Quaternion.Euler(rotationPlayer.eulerAngles.x,rotationPlayer.eulerAngles.y-180,rotationPlayer.eulerAngles.z));
+            Debug.Log(player.transform.rotation.eulerAngles);
+         }
         if(isShoot){
             timePass+=Time.deltaTime;
         }

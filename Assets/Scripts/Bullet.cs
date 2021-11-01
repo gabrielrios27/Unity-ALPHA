@@ -6,7 +6,7 @@ public class Bullet : MonoBehaviour
 {
    
 
-    public float speedBullet = 10f;
+    public float speedBullet = 15f;
     public Vector3 directionBullet = new Vector3(0, 0, 1f);
     public float damageBullet = 6;
     public float lifeBullet = 3f;
