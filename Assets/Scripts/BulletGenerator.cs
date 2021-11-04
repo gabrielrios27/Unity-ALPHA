@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class BulletGenerator: MonoBehaviour
 {
-    public GameObject BulletPrefabs;
-     public float spawnInterval = 2f;
-     public float startDelay = 1;
+    [SerializeField] private GameObject BulletPrefabs;
+     [SerializeField] private float spawnInterval = 2f;
+     [SerializeField] private float startDelay = 1;
     
 
     void Start()

@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class GunController : MonoBehaviour
 {
-    public Vector3 spawnPosition= new Vector3(0.79f,1.718f,-1.934f);
-    public GameObject gunPosition;
-    public GameObject prefabBullet;
+    [SerializeField] private Vector3 spawnPosition= new Vector3(0.79f,1.718f,-1.934f);
+    [SerializeField] private GameObject gunPosition;
+    [SerializeField] private GameObject prefabBullet;
     private Vector3 scaleChange = new Vector3(0.1f, 0.1f, 0.4f);
     
-    public float coolDown = 0.5f;
-    public float timePass=0;
-    public bool isShoot= false;
+    [SerializeField] private float coolDown = 0.5f;
+    [SerializeField] private float timePass=0;
+    [SerializeField] private bool isShoot= false;
   
     private GameObject player;
     

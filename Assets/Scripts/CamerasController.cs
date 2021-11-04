@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CamerasController : MonoBehaviour
 {
-    public GameObject[] cameras;
+    [SerializeField] private GameObject[] cameras;
     // Start is called before the first frame update
     void Start()
     {

@@ -6,10 +6,10 @@ public class Bullet : MonoBehaviour
 {
    
 
-    public float speedBullet = 15f;
-    public Vector3 directionBullet = new Vector3(0, 0, 1f);
-    public float damageBullet = 6;
-    public float lifeBullet = 3f;
+    [SerializeField] private float speedBullet = 15f;
+    [SerializeField] private Vector3 directionBullet = new Vector3(0, 0, 1f);
+    // [SerializeField] private float damageBullet = 6;
+    [SerializeField] private float lifeBullet = 3f;
 
     // Start is called before the first frame update
     void Start()

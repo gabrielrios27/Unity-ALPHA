@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public int lifePlayer = 5;
-    public string namePlayer = "Alpha1";
-    public float speedPlayer = 0.5f;
-    float cameraAxis= 180;
-    public Vector3 initPosition = new Vector3(4, 2, 1);
+    // [SerializeField] private int lifePlayer = 5;
+    // [SerializeField] private string namePlayer = "Alpha1";
+    [SerializeField] private float speedPlayer = 0.5f;
+    private float cameraAxis= 180;
+    [SerializeField] private Vector3 initPosition = new Vector3(4, 2, 1);
     // Start is called before the first frame update
     void Start()
     {
