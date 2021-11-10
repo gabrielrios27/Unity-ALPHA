@@ -48,8 +48,6 @@ MonoBehaviour:
   speedPlayer: 4
   initPosition: {x: 0.42, y: 1.07, z: -3.57}
   animPlayer: {fileID: 368971925228897206}
-  punchSound: {fileID: 0}
-  walkSound: {fileID: 0}
 --- !u!1 &6767814372653565403
 GameObject:
   m_ObjectHideFlags: 0
@@ -1002,6 +1000,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4754438760408435374}
     m_Modifications:
+    - target: {fileID: -490167228148717117, guid: 0f3620eb3f8690640be9fa50cec5f36b, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5005453403304200495, guid: 0f3620eb3f8690640be9fa50cec5f36b, type: 3}
       propertyPath: m_RootOrder
       value: 0
