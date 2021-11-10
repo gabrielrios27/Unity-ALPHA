@@ -9,10 +9,13 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float speedPlayer = 0.5f;
     private float cameraAxis= 180;
     [SerializeField] private Vector3 initPosition = new Vector3(4, 2, 1);
+
+    [SerializeField] private Animator animPlayer;
+   
     // Start is called before the first frame update
     void Start()
     {
-        
+        animPlayer.SetBool("isRun", false);
     }
 
     // Update is called once per frame
@@ -25,7 +28,16 @@ public class PlayerController : MonoBehaviour
     {
         float ejeHorizontal = Input.GetAxisRaw("Horizontal");
         float ejeVertical = Input.GetAxisRaw("Vertical");
-        transform.Translate(speedPlayer * Time.deltaTime * new Vector3(-ejeHorizontal, 0, -ejeVertical));
+        if (ejeHorizontal != 0 || ejeVertical != 0) {
+            animPlayer.SetBool("isRun", true);
+            Vector3 direction = new Vector3(ejeHorizontal, 0, ejeVertical);
+            transform.Translate(speedPlayer * Time.deltaTime * direction);
+        }
+        else
+        {
+            animPlayer.SetBool("isRun", false);
+        }
+        // transform.Translate(speedPlayer * Time.deltaTime * new Vector3(-ejeHorizontal, 0, -ejeVertical));
     }
     private void RotatePlayer(){
         cameraAxis += Input.GetAxis("Mouse X");
