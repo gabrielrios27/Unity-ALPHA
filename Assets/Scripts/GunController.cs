@@ -27,7 +27,7 @@ public class GunController : MonoBehaviour
         Quaternion rotationPlayer= player.transform.rotation;
         if(Input.GetMouseButtonDown(0) && !isShoot){
             isShoot=true;
-            Instantiate(prefabBullet,gunPosition.transform.position , Quaternion.Euler(rotationPlayer.eulerAngles.x,rotationPlayer.eulerAngles.y-180,rotationPlayer.eulerAngles.z));
+            Instantiate(prefabBullet,gunPosition.transform.position , Quaternion.Euler(rotationPlayer.eulerAngles.x,rotationPlayer.eulerAngles.y,rotationPlayer.eulerAngles.z));
             Debug.Log(player.transform.rotation.eulerAngles);
          }
         if(isShoot){
