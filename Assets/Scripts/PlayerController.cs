@@ -7,7 +7,7 @@ public class PlayerController : MonoBehaviour
     // [SerializeField] private int lifePlayer = 5;
     // [SerializeField] private string namePlayer = "Alpha1";
     [SerializeField] private float speedPlayer = 0.5f;
-    private float cameraAxis= 180;
+    private float cameraAxis= 0;
     [SerializeField] private Vector3 initPosition = new Vector3(4, 2, 1);
 
     [SerializeField] private Animator animPlayer;
@@ -28,7 +28,9 @@ public class PlayerController : MonoBehaviour
     {
         float ejeHorizontal = Input.GetAxisRaw("Horizontal");
         float ejeVertical = Input.GetAxisRaw("Vertical");
+        Vector3 angleStay = transform.localRotation.eulerAngles;
         if (ejeHorizontal != 0 || ejeVertical != 0) {
+
             animPlayer.SetBool("isRun", true);
             Vector3 direction = new Vector3(ejeHorizontal, 0, ejeVertical);
             transform.Translate(speedPlayer * Time.deltaTime * direction);
@@ -36,8 +38,9 @@ public class PlayerController : MonoBehaviour
         else
         {
             animPlayer.SetBool("isRun", false);
+            // transform.GetChild(0).localEulerAngles = new Vector3(0,angleStay.y + 40,0);
         }
-        // transform.Translate(speedPlayer * Time.deltaTime * new Vector3(-ejeHorizontal, 0, -ejeVertical));
+        
     }
     private void RotatePlayer(){
         cameraAxis += Input.GetAxis("Mouse X");
