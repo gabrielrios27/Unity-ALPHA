@@ -13,6 +13,7 @@ public class EnemyController : MonoBehaviour
     enum typeOfEnemys {spectator=1 , runner, killer};
     [SerializeField] private typeOfEnemys typeOfEnemy;
     private Rigidbody rbEnemy;
+    [SerializeField] private Animator animEnemy;
 
     // Start is called before the first frame update
     void Start()
@@ -48,12 +49,12 @@ public class EnemyController : MonoBehaviour
         Debug.Log(direction);
         if(direction.magnitude > 2 && typeOfEnemy==typeOfEnemys.runner){
             rbEnemy.AddForce(direction.normalized * speedEnemy);
-            Debug.Log(direction.normalized);
+            Debug.Log("direction.normalized");
         }else if(typeOfEnemy==typeOfEnemys.killer){
             rbEnemy.AddForce(direction.normalized * speedEnemy);
             // transform.position += speedEnemy * Time.deltaTime * direction.normalized;
             Debug.Log(speedEnemy);
-            Debug.Log(direction.normalized);
+            Debug.Log(rbEnemy);
         }
     }
     private void LookAtPlayer(){
