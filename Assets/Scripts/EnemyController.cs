@@ -45,11 +45,15 @@ public class EnemyController : MonoBehaviour
     
     private void MoveToward(){
         Vector3 direction = GetPlayerDirection();
+        Debug.Log(direction);
         if(direction.magnitude > 2 && typeOfEnemy==typeOfEnemys.runner){
             rbEnemy.AddForce(direction.normalized * speedEnemy);
+            Debug.Log(direction.normalized);
         }else if(typeOfEnemy==typeOfEnemys.killer){
             rbEnemy.AddForce(direction.normalized * speedEnemy);
             // transform.position += speedEnemy * Time.deltaTime * direction.normalized;
+            Debug.Log(speedEnemy);
+            Debug.Log(direction.normalized);
         }
     }
     private void LookAtPlayer(){
