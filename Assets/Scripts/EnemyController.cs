@@ -17,6 +17,7 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private Animator animEnemy;
     private bool isAttack = false;
     private bool isRun = false;
+    private bool isLeader =false;
 
     // Start is called before the first frame update
     void Start()
@@ -83,15 +84,19 @@ public class EnemyController : MonoBehaviour
         {
             case typeOfEnemys.spectator:
                 LookAtPlayer();
+                isLeader =true;
                 break;
             case typeOfEnemys.runner:
                 HuntLookDied();
+                isLeader =false;
                 break;
             case typeOfEnemys.killer:
                 HuntLookDied();
+                isLeader =false;
                 break;
             default:
                 LookAtPlayer();
+                isLeader =true;
                 break;
         }
     }
@@ -102,7 +107,13 @@ public class EnemyController : MonoBehaviour
                 armorEnemy--;
                 Destroy(other.gameObject);
                 if(armorEnemy==0){
-                    Destroy(gameObject);
+                    if(isLeader){
+                        Debug.Log("ganaste!!");
+                        Destroy(gameObject);
+                    }else{
+                        Destroy(gameObject);
+                    }
+                 
                 }
   
             }

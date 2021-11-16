@@ -27,16 +27,37 @@ public class PlayerController : MonoBehaviour
     }
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("EnemyHand"))
+        if (collision.gameObject.CompareTag("Enemy"))
         {
             armorPlayer--;
             Debug.Log("golpe");
-            Destroy(collision.gameObject);
             if(armorPlayer < 0)
             {
                 Debug.Log("GAME OVER");
                 Destroy(gameObject);
             }
+        }
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("EnemyHand"))
+        {
+            armorPlayer--;
+            Debug.Log("golpe");
+            if(armorPlayer < 0)
+            {
+                Debug.Log("GAME OVER");
+                Destroy(gameObject);
+            }
+        }
+    }
+     private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.CompareTag("BoxLife"))
+        {
+            armorPlayer++;
+            Debug.Log("vida + 1");
+           
         }
     }
     private void Move()
