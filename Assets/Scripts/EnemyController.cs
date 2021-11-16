@@ -5,26 +5,30 @@ using UnityEngine;
 public class EnemyController : MonoBehaviour
 {
    
-    [SerializeField] private float speedEnemy = 3;
+    [SerializeField] private float speedEnemy = 10;
     [SerializeField] private float lifeEnemy = 10f;
     [SerializeField] private float armorEnemy = 2f;
+    [SerializeField] private float attackRange = 0.5f;
      private GameObject player;
     [SerializeField] private float speedToLook = 3f;
     enum typeOfEnemys {spectator=1 , runner, killer};
     [SerializeField] private typeOfEnemys typeOfEnemy;
     private Rigidbody rbEnemy;
+    
+    
 
     // Start is called before the first frame update
     void Start()
     {
       player = GameObject.Find("Player");
       rbEnemy = GetComponent<Rigidbody>();
+   
     }
 
     // Update is called once per frame
     void Update()
     {
- 
+        
     }
 
     private void FixedUpdate()
@@ -45,8 +49,10 @@ public class EnemyController : MonoBehaviour
     
     private void MoveToward(){
         Vector3 direction = GetPlayerDirection();
+        Debug.Log(direction);
         if(direction.magnitude > 2 && typeOfEnemy==typeOfEnemys.runner){
             rbEnemy.AddForce(direction.normalized * speedEnemy);
+            Debug.Log("direction.normalized");
         }else if(typeOfEnemy==typeOfEnemys.killer){
             rbEnemy.AddForce(direction.normalized * speedEnemy);
             // transform.position += speedEnemy * Time.deltaTime * direction.normalized;
