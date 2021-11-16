@@ -6,6 +6,7 @@ public class EnemyController : MonoBehaviour
 {
    
     [SerializeField] private float speedEnemy = 3;
+    [SerializeField] private float attackRange = 1.5f;
     [SerializeField] private float lifeEnemy = 10f;
     [SerializeField] private float armorEnemy = 2f;
      private GameObject player;
@@ -14,18 +15,22 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private typeOfEnemys typeOfEnemy;
     private Rigidbody rbEnemy;
     [SerializeField] private Animator animEnemy;
+    private bool isAttack = false;
+    private bool isRun = false;
 
     // Start is called before the first frame update
     void Start()
     {
       player = GameObject.Find("Player");
       rbEnemy = GetComponent<Rigidbody>();
+      animEnemy = gameObject.transform.GetChild(0).GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
- 
+        animEnemy.SetBool("isRun", isRun);
+        animEnemy.SetBool("isAttack", isAttack);
     }
 
     private void FixedUpdate()
@@ -46,16 +51,21 @@ public class EnemyController : MonoBehaviour
     
     private void MoveToward(){
         Vector3 direction = GetPlayerDirection();
-        Debug.Log(direction);
-        if(direction.magnitude > 2 && typeOfEnemy==typeOfEnemys.runner){
-            rbEnemy.AddForce(direction.normalized * speedEnemy);
-            Debug.Log("direction.normalized");
-        }else if(typeOfEnemy==typeOfEnemys.killer){
-            rbEnemy.AddForce(direction.normalized * speedEnemy);
-            // transform.position += speedEnemy * Time.deltaTime * direction.normalized;
-            Debug.Log(speedEnemy);
-            Debug.Log(rbEnemy);
+      
+
+        if(direction.magnitude > attackRange)
+        {
+            isAttack = false;
+            isRun = true;
+            rbEnemy.AddForce(direction.normalized * speedEnemy, ForceMode.Impulse);
         }
+        else
+        {
+            isAttack = true;
+            isRun = false;
+        }
+
+        
     }
     private void LookAtPlayer(){
         Vector3 direction = GetPlayerDirection();

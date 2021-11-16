@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
     // [SerializeField] private int lifePlayer = 5;
     // [SerializeField] private string namePlayer = "Alpha1";
     [SerializeField] private float speedPlayer = 0.5f;
+    [SerializeField] private int armorPlayer = 5;
     private float cameraAxis= 0;
     [SerializeField] private Vector3 initPosition = new Vector3(4, 2, 1);
 
@@ -23,6 +24,20 @@ public class PlayerController : MonoBehaviour
     {   
         RotatePlayer();
         Move();
+    }
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("EnemyHand"))
+        {
+            armorPlayer--;
+            Debug.Log("golpe");
+            Destroy(collision.gameObject);
+            if(armorPlayer < 0)
+            {
+                Debug.Log("GAME OVER");
+                Destroy(gameObject);
+            }
+        }
     }
     private void Move()
     {

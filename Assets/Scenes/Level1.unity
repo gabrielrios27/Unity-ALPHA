@@ -138,7 +138,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &70210292
 Transform:
   m_ObjectHideFlags: 0
@@ -2699,16 +2699,24 @@ PrefabInstance:
       value: Enemy Soldier (1)
       objectReference: {fileID: 0}
     - target: {fileID: 2891286318088479222, guid: 8c90b15534d502f43a7969472c1631c0, type: 3}
+      propertyPath: m_Mass
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 2891286318088479222, guid: 8c90b15534d502f43a7969472c1631c0, type: 3}
       propertyPath: m_Constraints
       value: 84
       objectReference: {fileID: 0}
     - target: {fileID: 3070598848018202482, guid: 8c90b15534d502f43a7969472c1631c0, type: 3}
       propertyPath: lifeEnemy
-      value: 20
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 3070598848018202482, guid: 8c90b15534d502f43a7969472c1631c0, type: 3}
       propertyPath: speedEnemy
-      value: 3
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 3070598848018202482, guid: 8c90b15534d502f43a7969472c1631c0, type: 3}
+      propertyPath: attackRange
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 4778209617555487851, guid: 8c90b15534d502f43a7969472c1631c0, type: 3}
       propertyPath: m_Name
@@ -3700,13 +3708,25 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy Soldier (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 2891286318088479222, guid: 8c90b15534d502f43a7969472c1631c0, type: 3}
+      propertyPath: m_Mass
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 3070598848018202482, guid: 8c90b15534d502f43a7969472c1631c0, type: 3}
+      propertyPath: lifeEnemy
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 3070598848018202482, guid: 8c90b15534d502f43a7969472c1631c0, type: 3}
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3070598848018202482, guid: 8c90b15534d502f43a7969472c1631c0, type: 3}
       propertyPath: speedEnemy
-      value: 3
+      value: 31
+      objectReference: {fileID: 0}
+    - target: {fileID: 3070598848018202482, guid: 8c90b15534d502f43a7969472c1631c0, type: 3}
+      propertyPath: attackRange
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 3070598848018202482, guid: 8c90b15534d502f43a7969472c1631c0, type: 3}
       propertyPath: typeOfEnemy
@@ -4211,8 +4231,16 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8158705167516995961, guid: ec05f87c13195d54a9e902fce08a52f1, type: 3}
+      propertyPath: lifeEnemy
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 8158705167516995961, guid: ec05f87c13195d54a9e902fce08a52f1, type: 3}
       propertyPath: m_Enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8158705167516995961, guid: ec05f87c13195d54a9e902fce08a52f1, type: 3}
+      propertyPath: armorEnemy
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ec05f87c13195d54a9e902fce08a52f1, type: 3}
