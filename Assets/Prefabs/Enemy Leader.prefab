@@ -61,7 +61,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speedEnemy: 31
-  attackRange: 1
+  attackRange: 2
   lifeEnemy: 10
   armorEnemy: 2
   speedToLook: 3
