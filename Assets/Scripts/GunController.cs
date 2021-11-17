@@ -37,10 +37,6 @@ public class GunController : MonoBehaviour
             isShoot=false;
             timePass=0;
         }
-        
-        if(Input.GetKeyDown(KeyCode.Space)){
-            prefabBullet.transform.localScale += prefabBullet.transform.localScale;
-        }
-        
+                
     }
 }
