@@ -12,11 +12,16 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Vector3 initPosition = new Vector3(4, 2, 1);
 
     [SerializeField] private Animator animPlayer;
+    [SerializeField] float jumpForce = 2f;
+    [SerializeField] LayerMask groundLayer;
+    private Rigidbody rb;
+    private bool isGrounded = true;
    
     // Start is called before the first frame update
     void Start()
     {
         animPlayer.SetBool("isRun", false);
+        rb = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
@@ -24,6 +29,13 @@ public class PlayerController : MonoBehaviour
     {   
         RotatePlayer();
         Move();
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            if (isGrounded)
+            {
+                Jump();
+            }
+        }
     }
     private void OnCollisionEnter(Collision collision)
     {
@@ -50,7 +62,7 @@ public class PlayerController : MonoBehaviour
                 Destroy(gameObject);
             }
         }
-    }
+    } 
      private void OnTriggerExit(Collider other)
     {
         if (other.gameObject.CompareTag("BoxLife"))
@@ -82,5 +94,18 @@ public class PlayerController : MonoBehaviour
         cameraAxis += Input.GetAxis("Mouse X");
         Quaternion angle = Quaternion.Euler(0, cameraAxis,0);
         transform.localRotation = angle;
+    }
+    private void Jump()
+    {
+        Debug.Log("Deberia saltar");
+        rb.AddForce(0,1 * jumpForce,0);
+    }
+    private bool IsGrounded()
+    {
+        if (Physics.Raycast(transform.position, Vector3.down, 0.5f, groundLayer))
+        {
+            return true;
+        }
+        else return false;
     }
 }
