@@ -9,7 +9,7 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private float attackRange = 1.5f;
     [SerializeField] private float lifeEnemy = 10f;
     [SerializeField] private float armorEnemy = 2f;
-     private GameObject player;
+    private GameObject player;
     [SerializeField] private float speedToLook = 3f;
     enum typeOfEnemys {spectator=1 , runner, killer};
     [SerializeField] private typeOfEnemys typeOfEnemy;
@@ -77,7 +77,15 @@ public class EnemyController : MonoBehaviour
     }
     private Vector3 GetPlayerDirection()
     {
-        return player.transform.position - transform.position;
+         if (player)
+            {
+
+                return player.transform.position - transform.position;
+
+            }
+        else{
+            return new Vector3(0,0,0);
+        }
     }
     void SwitchEnemy(){
         switch (typeOfEnemy)
@@ -108,9 +116,13 @@ public class EnemyController : MonoBehaviour
                 Destroy(other.gameObject);
                 if(armorEnemy==0){
                     if(isLeader){
+                        GameManager.instance.addWinScore();
+                        Debug.Log(GameManager.GetScore());
                         Debug.Log("ganaste!!");
                         Destroy(gameObject);
                     }else{
+                        GameManager.instance.addScore();
+                        Debug.Log(GameManager.GetScore());
                         Destroy(gameObject);
                     }
                  

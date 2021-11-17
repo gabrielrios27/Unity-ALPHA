@@ -866,6 +866,7 @@ MonoBehaviour:
   attackRange: 2
   lifeEnemy: 19.98
   armorEnemy: 2
+  player: {fileID: 4754438760408435372, guid: 887c30c60d591c249a89126b157783cc, type: 3}
   speedToLook: 3
   typeOfEnemy: 3
   animEnemy: {fileID: 6482804003199814492}

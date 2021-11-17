@@ -284,10 +284,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speedEnemy: 2
+  attackRange: 1.5
   lifeEnemy: 7
   armorEnemy: 2
+  player: {fileID: 4754438760408435372, guid: 887c30c60d591c249a89126b157783cc, type: 3}
   speedToLook: 3
   typeOfEnemy: 3
+  animEnemy: {fileID: 0}
 --- !u!65 &-8903593576914721715
 BoxCollider:
   m_ObjectHideFlags: 0

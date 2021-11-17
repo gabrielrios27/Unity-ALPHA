@@ -9,8 +9,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float speedPlayer = 0.5f;
     [SerializeField] private int armorPlayer = 5;
     private float cameraAxis= 0;
-    [SerializeField] private Vector3 initPosition = new Vector3(4, 2, 1);
-
+    
     [SerializeField] private Animator animPlayer;
    
     // Start is called before the first frame update
