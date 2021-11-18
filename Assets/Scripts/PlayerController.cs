@@ -56,12 +56,22 @@ public class PlayerController : MonoBehaviour
         {
             armorPlayer--;
             Debug.Log("golpe");
-            if(armorPlayer < 0)
+            if(armorPlayer < 1)
             {
                 Debug.Log("GAME OVER");
                 Destroy(gameObject);
             }
         }
+        if (other.gameObject.CompareTag("BulletAlien"))
+            {
+                armorPlayer--;
+                Destroy(other.gameObject);
+                if(armorPlayer< 1){
+                     Debug.Log("GAME OVER");
+                     Destroy(gameObject);
+                }
+  
+            }
     } 
      private void OnTriggerExit(Collider other)
     {

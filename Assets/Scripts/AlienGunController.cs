@@ -45,12 +45,12 @@ public class AlienGunController : MonoBehaviour
         
         if (Physics.Raycast(bulletOrigen.transform.position, bulletOrigen.transform.TransformDirection(Vector3.forward), out hit, distanceRay))
         {
-            if(hit.transform.CompareTag("Enemy"))
+            if(hit.transform.CompareTag("Player"))
             {
                 Debug.Log("COLISION PLAYER");
                 canShoot   = false;
                 timerShoot = 0;
-                Instantiate(bulletPrefab, bulletOrigen.transform.position, bulletPrefab.transform.rotation);
+                Instantiate(bulletPrefab, bulletOrigen.transform.position, bulletOrigen.transform.rotation);
             }
         }
 
