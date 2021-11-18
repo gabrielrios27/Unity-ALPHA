@@ -52,21 +52,19 @@ public class EnemyController : MonoBehaviour
     
     private void MoveToward(){
         Vector3 direction = GetPlayerDirection();
-      
 
         if(direction.magnitude > attackRange)
         {
             isAttack = false;
             isRun = true;
             rbEnemy.AddForce(direction.normalized * speedEnemy, ForceMode.Impulse);
+    
         }
         else
         {
             isAttack = true;
             isRun = false;
         }
-
-        
     }
     private void LookAtPlayer(){
         Vector3 direction = GetPlayerDirection();

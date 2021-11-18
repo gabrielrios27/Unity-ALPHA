@@ -20,6 +20,8 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         animPlayer.SetBool("isRun", false);
+        animPlayer.SetBool("isRight", false);
+        animPlayer.SetBool("isLeft", false);
         rb = GetComponent<Rigidbody>();
     }
 
@@ -28,14 +30,8 @@ public class PlayerController : MonoBehaviour
     {   
         RotatePlayer();
         Move();
-        isGrounded=IsGrounded();
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            if (isGrounded)
-            {
-                Jump();
-            }
-        }
+        Jump();
+        AnimHorizontal();
     }
     private void OnCollisionEnter(Collision collision)
     {
@@ -107,8 +103,41 @@ public class PlayerController : MonoBehaviour
     }
     private void Jump()
     {
-        Debug.Log("Deberia saltar");
-        rb.AddForce(0,1 * jumpForce,0);
+        isGrounded=IsGrounded();
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            if (isGrounded)
+            {
+                rb.AddForce(0,1 * jumpForce,0);
+                animPlayer.SetTrigger("jump");
+            }
+        }
+  
+    }
+    private void AnimHorizontal(){
+      
+       if(Input.GetKey(KeyCode.D)){
+           if(Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S)){
+                animPlayer.SetBool("isRun", true);
+                animPlayer.SetBool("isRight", false);
+           }else{
+                animPlayer.SetBool("isRight", true);
+           }
+       }else{
+           animPlayer.SetBool("isRight", false);
+       }
+
+       if(Input.GetKey(KeyCode.A)){
+            if(Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S)){
+                animPlayer.SetBool("isRun", true);
+                animPlayer.SetBool("isLeft", false);
+           }else{
+                animPlayer.SetBool("isLeft", true);
+           }
+            
+       }else{
+           animPlayer.SetBool("isLeft", false);
+       }
     }
     private bool IsGrounded()
     {
