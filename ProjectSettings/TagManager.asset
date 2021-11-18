@@ -8,6 +8,7 @@ TagManager:
   - EnemyHand
   - BoxLife
   - Enemy
+  - BulletAlien
   layers:
   - Default
   - TransparentFX
