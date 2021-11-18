@@ -28,6 +28,7 @@ public class PlayerController : MonoBehaviour
     {   
         RotatePlayer();
         Move();
+        isGrounded=IsGrounded();
         if (Input.GetKeyDown(KeyCode.Space))
         {
             if (isGrounded)
@@ -101,7 +102,7 @@ public class PlayerController : MonoBehaviour
     }
     private bool IsGrounded()
     {
-        if (Physics.Raycast(transform.position, Vector3.down, 0.5f, groundLayer))
+        if (Physics.Raycast(transform.position + new Vector3(0,0.3f,0), Vector3.down, 0.5f, groundLayer))
         {
             return true;
         }

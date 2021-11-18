@@ -28,8 +28,7 @@ public class GunController : MonoBehaviour
         if(Input.GetMouseButtonDown(0) && !isShoot){
             isShoot=true;
             Instantiate(prefabBullet,gunPosition.transform.position , Quaternion.Euler(rotationPlayer.eulerAngles.x,rotationPlayer.eulerAngles.y,rotationPlayer.eulerAngles.z));
-            Debug.Log(player.transform.rotation.eulerAngles);
-         }
+        }
         if(isShoot){
             timePass+=Time.deltaTime;
         }

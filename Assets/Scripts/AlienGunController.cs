@@ -50,8 +50,7 @@ public class AlienGunController : MonoBehaviour
                 Debug.Log("COLISION PLAYER");
                 canShoot   = false;
                 timerShoot = 0;
-                GameObject b = Instantiate(bulletPrefab, bulletOrigen.transform.position, bulletPrefab.transform.rotation);
-                b.GetComponent<Rigidbody>().AddForce(bulletOrigen.transform.TransformDirection(Vector3.forward) * 20f, ForceMode.Impulse);
+                Instantiate(bulletPrefab, bulletOrigen.transform.position, bulletPrefab.transform.rotation);
             }
         }
 
