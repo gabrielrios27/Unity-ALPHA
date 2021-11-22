@@ -530,6 +530,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnPosition: {x: 0.79, y: 1.718, z: -1.934}
+  gunPosition: {fileID: 0}
   prefabBullet: {fileID: 0}
   coolDown: 0.5
   timePass: 0

@@ -13,6 +13,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Animator animPlayer;
     [SerializeField] float jumpForce = 2f;
     [SerializeField] LayerMask groundLayer;
+    [SerializeField] private List<GameObject> guns;
+    private int indexGuns = 0;
     private Rigidbody rb;
     private bool isGrounded = true;
    
@@ -32,6 +34,7 @@ public class PlayerController : MonoBehaviour
         Move();
         Jump();
         AnimHorizontal();
+        ChangeGun();
     }
     private void OnCollisionEnter(Collision collision)
     {
@@ -147,5 +150,40 @@ public class PlayerController : MonoBehaviour
         }
         else return false;
     }
-  
+    private void SwitchGuns(int index)
+    {
+         for (int i = 0; i < guns.Count; i++)
+            {
+                if(i == index)
+                {
+                    guns[i].SetActive(true);
+                }
+                else
+                {
+                    guns[i].SetActive(false);
+                }
+
+            }
+    }
+     private void ChangeGun()
+    {
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            indexGuns++;
+            if (indexGuns == guns.Count)
+            {
+                indexGuns = 0;
+            }
+            SwitchGuns(indexGuns);
+        }
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            indexGuns--;
+            if (indexGuns < 0)
+            {
+                indexGuns = guns.Count - 1;
+            }
+            SwitchGuns(indexGuns);
+        }
+    }
 }

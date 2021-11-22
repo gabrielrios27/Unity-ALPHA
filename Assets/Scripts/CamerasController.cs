@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class CamerasController : MonoBehaviour
 {
-    [SerializeField] private GameObject[] cameras;
+    [SerializeField] private List<GameObject> cameras;
+    private int indexCamera = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -14,25 +15,38 @@ public class CamerasController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Alpha7))
+        if (Input.GetKeyDown(KeyCode.P))
         {
-            cameras[0].SetActive(true);
-            cameras[1].SetActive(false);
-            cameras[2].SetActive(false);
+            indexCamera++;
+            if (indexCamera == cameras.Count)
+            {
+                indexCamera = 0;
+            }
+            SwitchCameras(indexCamera);
         }
-
-        if (Input.GetKeyDown(KeyCode.Alpha8))
+        if (Input.GetKeyDown(KeyCode.O))
         {
-            cameras[0].SetActive(false);
-            cameras[1].SetActive(true);
-            cameras[2].SetActive(false);
+            indexCamera--;
+            if (indexCamera < 0)
+            {
+                indexCamera = cameras.Count - 1;
+            }
+            SwitchCameras(indexCamera);
         }
-
-        if (Input.GetKeyDown(KeyCode.Alpha9))
+    }
+     private void SwitchCameras(int index)
+    {
+         for (int i = 0; i < cameras.Count; i++)
         {
-            cameras[0].SetActive(false);
-            cameras[1].SetActive(false);
-            cameras[2].SetActive(true);
+            if(i == index)
+            {
+                cameras[i].SetActive(true);
+            }
+            else
+            {
+                cameras[i].SetActive(false);
+            }
+
         }
     }
 }
