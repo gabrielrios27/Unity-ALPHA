@@ -5,7 +5,7 @@ using UnityEngine;
 public class GunController : MonoBehaviour
 {
     [SerializeField] private Vector3 spawnPosition= new Vector3(0.79f,1.718f,-1.934f);
-    [SerializeField] private GameObject gunPosition;
+    [SerializeField] private GameObject bulletPosition;
     [SerializeField] private GameObject prefabBullet;
     private Vector3 scaleChange = new Vector3(0.1f, 0.1f, 0.4f);
     
@@ -27,7 +27,7 @@ public class GunController : MonoBehaviour
         Quaternion rotationPlayer= player.transform.rotation;
         if(Input.GetMouseButtonDown(0) && !isShoot){
             isShoot=true;
-            Instantiate(prefabBullet,gunPosition.transform.position , Quaternion.Euler(rotationPlayer.eulerAngles.x,rotationPlayer.eulerAngles.y,rotationPlayer.eulerAngles.z));
+            Instantiate(prefabBullet,bulletPosition.transform.position , Quaternion.Euler(rotationPlayer.eulerAngles.x,rotationPlayer.eulerAngles.y,rotationPlayer.eulerAngles.z));
         }
         if(isShoot){
             timePass+=Time.deltaTime;
