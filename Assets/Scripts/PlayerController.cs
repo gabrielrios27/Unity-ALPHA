@@ -7,7 +7,7 @@ public class PlayerController : MonoBehaviour
     // [SerializeField] private int lifePlayer = 5;
     // [SerializeField] private string namePlayer = "Alpha1";
     [SerializeField] private float speedPlayer = 0.5f;
-    [SerializeField] private int armorPlayer = 5;
+    [SerializeField] private int armorPlayer = 100;
     private float cameraAxis= 0;
     
     [SerializeField] private Animator animPlayer;
@@ -17,6 +17,8 @@ public class PlayerController : MonoBehaviour
     private int indexGuns = 0;
     private Rigidbody rb;
     private bool isGrounded = true;
+
+    private int[] PlayerInfo = {0, 0};
    
     // Start is called before the first frame update
     void Start()
@@ -35,6 +37,7 @@ public class PlayerController : MonoBehaviour
         Jump();
         AnimHorizontal();
         ChangeGun();
+        UpdatePlayerInfo();
     }
     private void OnCollisionEnter(Collision collision)
     {
@@ -63,7 +66,7 @@ public class PlayerController : MonoBehaviour
         }
         if (other.gameObject.CompareTag("BulletAlien"))
             {
-                armorPlayer--;
+                armorPlayer-=3;
                 Destroy(other.gameObject);
                 if(armorPlayer< 1){
                      Debug.Log("GAME OVER");
@@ -185,5 +188,11 @@ public class PlayerController : MonoBehaviour
             }
             SwitchGuns(indexGuns);
         }
+    }
+    private void UpdatePlayerInfo(){
+        PlayerInfo[0] = armorPlayer;
+    }
+    public int[] GetPlayerInfo(){
+        return PlayerInfo;
     }
 }
