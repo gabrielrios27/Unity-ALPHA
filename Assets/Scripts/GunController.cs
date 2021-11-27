@@ -10,7 +10,7 @@ public class GunController : MonoBehaviour
     private Vector3 scaleChange = new Vector3(0.1f, 0.1f, 0.4f);
     
     [SerializeField] private float coolDown = 0.5f;
-    [SerializeField] private float reloadTime = 3f;
+    [SerializeField] private float reloadTime = 2.5f;
     [SerializeField] private float timePass=0;
     [SerializeField] private float timeReloadPass=0;
     [SerializeField] private bool isShoot= false;
@@ -36,12 +36,11 @@ public class GunController : MonoBehaviour
             Instantiate(prefabBullet,bulletPosition.transform.position , Quaternion.Euler(rotationPlayer.eulerAngles.x,rotationPlayer.eulerAngles.y,rotationPlayer.eulerAngles.z));
             bulletCharge--;
         }
-        if(bulletCharge <= 0){
+        if(bulletCharge < 1){
             timeReloadPass+=Time.deltaTime;
             reloadFlag = true;
         }
         if(timeReloadPass > reloadTime){
-            Debug.Log("reloadFlag: " + reloadFlag);
             reloadFlag=false;
             timeReloadPass=0;
             bulletCharge = bulletQuantity;

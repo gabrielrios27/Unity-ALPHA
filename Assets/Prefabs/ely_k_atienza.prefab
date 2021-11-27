@@ -1179,8 +1179,12 @@ MonoBehaviour:
   bulletPosition: {fileID: 8941185390191146759}
   prefabBullet: {fileID: 1135688660313973896, guid: 678772de9693dfc4eaa66a58129271cf, type: 3}
   coolDown: 0.2
+  reloadTime: 2.5
   timePass: 0
+  timeReloadPass: 0
   isShoot: 0
+  bulletQuantity: 100
+  bulletCharge: 0
 --- !u!1 &6141842058794704463
 GameObject:
   m_ObjectHideFlags: 0
@@ -2325,15 +2329,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 402888, guid: ee07b11e52e151d4996563fca0ad1b1d, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.92285806
+      value: 0.695
       objectReference: {fileID: 0}
     - target: {fileID: 402888, guid: ee07b11e52e151d4996563fca0ad1b1d, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1.0777
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 402888, guid: ee07b11e52e151d4996563fca0ad1b1d, type: 3}
       propertyPath: m_LocalScale.z
-      value: 1.3092
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 402888, guid: ee07b11e52e151d4996563fca0ad1b1d, type: 3}
       propertyPath: m_LocalPosition.x

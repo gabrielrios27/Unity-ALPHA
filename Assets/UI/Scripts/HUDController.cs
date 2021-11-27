@@ -8,6 +8,7 @@ public class HUDController : MonoBehaviour
     [SerializeField] private Text textLife;
     [SerializeField] private Text textAmo;
     [SerializeField] private PlayerController playerController;
+    [SerializeField] private List<GameObject> gunsImages;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,5 +24,20 @@ public class HUDController : MonoBehaviour
         int[] playerInfo = playerController.GetPlayerInfo();
         textLife.text = playerInfo[0] + "%";
         textAmo.text = playerInfo[1] + " "; 
+        ChangeGunImageUI(playerInfo[2]);
+    }
+    private void ChangeGunImageUI(int indexGun){
+        for (int i = 0; i < gunsImages.Count; i++)
+            {
+                if(i == indexGun)
+                {
+                    gunsImages[i].SetActive(true);
+                }
+                else
+                {
+                    gunsImages[i].SetActive(false);
+                }
+
+            }
     }
 }

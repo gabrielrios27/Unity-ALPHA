@@ -711,6 +711,81 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3333791712455093382, guid: 887c30c60d591c249a89126b157783cc, type: 3}
   m_PrefabInstance: {fileID: 6767814372591175449}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &301202749
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 301202750}
+  - component: {fileID: 301202752}
+  - component: {fileID: 301202751}
+  m_Layer: 5
+  m_Name: Sci-Fi ShotgunImage
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &301202750
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 301202749}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1167974110}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
+  m_AnchoredPosition: {x: -205.63, y: 43.739998}
+  m_SizeDelta: {x: 121.58081, y: 72.6644}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &301202751
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 301202749}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.019607844, g: 0.6666667, b: 0.75294125, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: e968eae404a35bb43bf1cbc18bbaa457, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &301202752
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 301202749}
+  m_CullTransparentMesh: 1
 --- !u!1001 &331116363
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1839,7 +1914,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 60
+  field of view: 61
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -1993,6 +2068,81 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.9488188, y: 0.098425195, z: 0.94488186}
   m_Center: {x: 0.000000029802322, y: 0, z: 0.472441}
+--- !u!1 &1039707241
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1039707242}
+  - component: {fileID: 1039707244}
+  - component: {fileID: 1039707243}
+  m_Layer: 5
+  m_Name: SciFiGunHeavyWhiteImage
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &1039707242
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1039707241}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1167974110}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
+  m_AnchoredPosition: {x: -205.63, y: 43.739998}
+  m_SizeDelta: {x: 121.58081, y: 72.6644}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1039707243
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1039707241}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.019607844, g: 0.6666667, b: 0.75294125, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 13995a5a531bd964b8f359d08be1f809, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1039707244
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1039707241}
+  m_CullTransparentMesh: 1
 --- !u!1001 &1049203946
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2191,7 +2341,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   IgnoreTag: 
-  CameraRadius: 0.2
+  CameraRadius: 0.27
 --- !u!114 &1077908348
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -2482,6 +2632,8 @@ RectTransform:
   - {fileID: 1064992502}
   - {fileID: 1362846426}
   - {fileID: 1734593971}
+  - {fileID: 1039707242}
+  - {fileID: 301202750}
   - {fileID: 1471110742}
   m_Father: {fileID: 0}
   m_RootOrder: 9
@@ -2506,6 +2658,10 @@ MonoBehaviour:
   textLife: {fileID: 1734593972}
   textAmo: {fileID: 1064992503}
   playerController: {fileID: 1778527506}
+  gunsImages:
+  - {fileID: 1039707241}
+  - {fileID: 301202749}
+  - {fileID: 1471110741}
 --- !u!1 &1210724885
 GameObject:
   m_ObjectHideFlags: 0
@@ -2683,7 +2839,7 @@ MonoBehaviour:
   m_LookAt: {fileID: 0}
   m_Follow: {fileID: 739606086}
   m_Lens:
-    FieldOfView: 60
+    FieldOfView: 61
     OrthographicSize: 5
     NearClipPlane: 0.3
     FarClipPlane: 1000
@@ -3198,7 +3354,7 @@ GameObject:
   - component: {fileID: 1471110744}
   - component: {fileID: 1471110743}
   m_Layer: 5
-  m_Name: Image
+  m_Name: SciFiGunLightRadImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3216,7 +3372,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1167974110}
-  m_RootOrder: 4
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
@@ -4737,6 +4893,18 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3333791712454825446, guid: 887c30c60d591c249a89126b157783cc, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.7868371
+      objectReference: {fileID: 0}
+    - target: {fileID: 3333791712454825446, guid: 887c30c60d591c249a89126b157783cc, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.69669
+      objectReference: {fileID: 0}
+    - target: {fileID: 3333791712454825446, guid: 887c30c60d591c249a89126b157783cc, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.85881
+      objectReference: {fileID: 0}
     - target: {fileID: 3333791712455093382, guid: 887c30c60d591c249a89126b157783cc, type: 3}
       propertyPath: m_Name
       value: SciFiGunHeavyWhite
@@ -4764,6 +4932,10 @@ PrefabInstance:
     - target: {fileID: 4132818861911417690, guid: 887c30c60d591c249a89126b157783cc, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4695117061773993750, guid: 887c30c60d591c249a89126b157783cc, type: 3}
+      propertyPath: reloadTime
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4754438760408435372, guid: 887c30c60d591c249a89126b157783cc, type: 3}
       propertyPath: m_Name
@@ -4861,6 +5033,14 @@ PrefabInstance:
       propertyPath: coolDown
       value: 0.6
       objectReference: {fileID: 0}
+    - target: {fileID: 6057356563537378712, guid: 887c30c60d591c249a89126b157783cc, type: 3}
+      propertyPath: reloadTime
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6057356563537378712, guid: 887c30c60d591c249a89126b157783cc, type: 3}
+      propertyPath: bulletQuantity
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 7394707477779318222, guid: 887c30c60d591c249a89126b157783cc, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -4926,8 +5106,12 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8368820604999699588, guid: 887c30c60d591c249a89126b157783cc, type: 3}
+      propertyPath: reloadTime
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8368820604999699588, guid: 887c30c60d591c249a89126b157783cc, type: 3}
       propertyPath: bulletQuantity
-      value: 100
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 1887178049621195677, guid: 887c30c60d591c249a89126b157783cc, type: 3}

@@ -17,8 +17,9 @@ public class PlayerController : MonoBehaviour
     private int indexGuns = 0;
     private Rigidbody rb;
     private bool isGrounded = true;
-    private int[] PlayerInfo = {0, 0};
+    private int[] PlayerInfo = {0, 0, 0};
     private GunController GunCtrl;
+    private int SelectGun=0;
    
     // Start is called before the first frame update
     void Start()
@@ -161,6 +162,7 @@ public class PlayerController : MonoBehaviour
             {
                 if(i == index)
                 {
+                    SelectGun = index;
                     guns[i].SetActive(true);
                     GunCtrl = guns[i].GetComponent<GunController>();
                 }
@@ -196,15 +198,12 @@ public class PlayerController : MonoBehaviour
         PlayerInfo[0] = armorPlayer;
         int v = GunCtrl.GetBulletCharge();
         PlayerInfo[1] = v;
+        PlayerInfo[2] = SelectGun;
     }
     public int[] GetPlayerInfo(){
         return PlayerInfo;
     }
     private void ReloadAnim(){
-        // animPlayer.SetBool("isReload", GunCtrl.GetReloadFlag());
-        if(GunCtrl.GetReloadFlag()){
-            animPlayer.SetTrigger("reload");
-        }
-        
+        animPlayer.SetBool("isReload", GunCtrl.GetReloadFlag());
     }
 }
