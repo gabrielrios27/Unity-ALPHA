@@ -8,17 +8,17 @@ public class PlayerController : MonoBehaviour
     // [SerializeField] private string namePlayer = "Alpha1";
     [SerializeField] private float speedPlayer = 0.5f;
     [SerializeField] private int armorPlayer = 100;
-    private float cameraAxis= 0;
-    
     [SerializeField] private Animator animPlayer;
     [SerializeField] float jumpForce = 2f;
     [SerializeField] LayerMask groundLayer;
     [SerializeField] private List<GameObject> guns;
+    // [SerializeField] private GunController gumCtr;
+    private float cameraAxis= 0;
     private int indexGuns = 0;
     private Rigidbody rb;
     private bool isGrounded = true;
-
     private int[] PlayerInfo = {0, 0};
+    private GunController GunCtrl;
    
     // Start is called before the first frame update
     void Start()
@@ -27,6 +27,7 @@ public class PlayerController : MonoBehaviour
         animPlayer.SetBool("isRight", false);
         animPlayer.SetBool("isLeft", false);
         rb = GetComponent<Rigidbody>();
+        GunCtrl = guns[0].GetComponent<GunController>();
     }
 
     // Update is called once per frame
@@ -38,6 +39,7 @@ public class PlayerController : MonoBehaviour
         AnimHorizontal();
         ChangeGun();
         UpdatePlayerInfo();
+        ReloadAnim();
     }
     private void OnCollisionEnter(Collision collision)
     {
@@ -160,6 +162,7 @@ public class PlayerController : MonoBehaviour
                 if(i == index)
                 {
                     guns[i].SetActive(true);
+                    GunCtrl = guns[i].GetComponent<GunController>();
                 }
                 else
                 {
@@ -191,8 +194,17 @@ public class PlayerController : MonoBehaviour
     }
     private void UpdatePlayerInfo(){
         PlayerInfo[0] = armorPlayer;
+        int v = GunCtrl.GetBulletCharge();
+        PlayerInfo[1] = v;
     }
     public int[] GetPlayerInfo(){
         return PlayerInfo;
+    }
+    private void ReloadAnim(){
+        // animPlayer.SetBool("isReload", GunCtrl.GetReloadFlag());
+        if(GunCtrl.GetReloadFlag()){
+            animPlayer.SetTrigger("reload");
+        }
+        
     }
 }

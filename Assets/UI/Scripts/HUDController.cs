@@ -17,10 +17,11 @@ public class HUDController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        UpdateInfoUI();
     }
     private void UpdateInfoUI(){
         int[] playerInfo = playerController.GetPlayerInfo();
         textLife.text = playerInfo[0] + "%";
+        textAmo.text = playerInfo[1] + " "; 
     }
 }

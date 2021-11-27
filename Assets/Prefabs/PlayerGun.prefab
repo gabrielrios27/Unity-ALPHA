@@ -564,8 +564,11 @@ MonoBehaviour:
   bulletPosition: {fileID: 4618542503529797979}
   prefabBullet: {fileID: 1135688660313973896, guid: 678772de9693dfc4eaa66a58129271cf, type: 3}
   coolDown: 0.1
+  reloadTime: 3
   timePass: 0
   isShoot: 0
+  bulletQuantity: 100
+  bulletCharge: 0
 --- !u!1 &5745593940308325225
 GameObject:
   m_ObjectHideFlags: 0
