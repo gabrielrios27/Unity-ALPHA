@@ -2,22 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyController : MonoBehaviour
+public class AlienEnemy : MonoBehaviour
 {
-   
-    [SerializeField] private float speedEnemy = 3;
-    [SerializeField] private float attackRange = 1.5f;
-    [SerializeField] private float lifeEnemy = 10f;
-    [SerializeField] private float armorEnemy = 2f;
-    private GameObject player;
-    [SerializeField] private float speedToLook = 3f;
-    enum typeOfEnemys {spectator=1 , runner, killer};
-    [SerializeField] private typeOfEnemys typeOfEnemy;
-    private Rigidbody rbEnemy;
+    private float lifeEnemy;
+    private float armorEnemy;
+    
+    
+    [SerializeField] protected AlienData myData;
+    protected Rigidbody rbEnemy;
     [SerializeField] private Animator animEnemy;
-    private bool isAttack = false;
-    private bool isRun = false;
-    private bool isLeader =false;
+    private GameObject player;
+
+    protected bool isAttack = false;
+    protected bool isRun = false;
+    protected bool isLeader =false;
 
     // Start is called before the first frame update
     void Start()
@@ -25,6 +23,9 @@ public class EnemyController : MonoBehaviour
       player = GameObject.Find("Player");
       rbEnemy = GetComponent<Rigidbody>();
       animEnemy = gameObject.transform.GetChild(0).GetComponent<Animator>();
+      lifeEnemy = myData.HP;
+      armorEnemy = myData.Armor;
+
     }
 
     // Update is called once per frame
@@ -36,12 +37,11 @@ public class EnemyController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        SwitchEnemy();
+        HuntLookDied();
     }
     
     private void HuntLookDied(){
         lifeEnemy -= Time.deltaTime;
-        
         if(lifeEnemy > 0){
             LookAtPlayer();
             MoveToward();
@@ -50,14 +50,13 @@ public class EnemyController : MonoBehaviour
         }
     }
     
-    private void MoveToward(){
+    public virtual void MoveToward(){
         Vector3 direction = GetPlayerDirection();
-
-        if(direction.magnitude > attackRange)
+        if(direction.magnitude > myData.AttackRange)
         {
             isAttack = false;
             isRun = true;
-            rbEnemy.AddForce(direction.normalized * speedEnemy, ForceMode.Impulse);
+            rbEnemy.AddForce(direction.normalized * myData.Speed, ForceMode.Impulse);
     
         }
         else
@@ -66,52 +65,34 @@ public class EnemyController : MonoBehaviour
             isRun = false;
             rbEnemy.velocity= Vector3.zero;
         }
+        
+       
     }
     private void LookAtPlayer(){
         Vector3 direction = GetPlayerDirection();
         Vector3 newDirection = new Vector3(direction.x,0,direction.z);
         Quaternion newRotation = Quaternion.LookRotation(newDirection);
-        rbEnemy.rotation = Quaternion.Lerp(transform.rotation, newRotation, speedToLook * Time.deltaTime);
+        rbEnemy.rotation = Quaternion.Lerp(transform.rotation, newRotation, myData.SpeedToLook * Time.deltaTime);
          
     }
-    private Vector3 GetPlayerDirection()
+    protected Vector3 GetPlayerDirection()
     {
          if (player)
             {
-
                 return player.transform.position - transform.position;
-
             }
         else{
             return new Vector3(0,0,0);
         }
     }
-    void SwitchEnemy(){
-        switch (typeOfEnemy)
-        {
-            case typeOfEnemys.spectator:
-                LookAtPlayer();
-                isLeader =true;
-                break;
-            case typeOfEnemys.runner:
-                HuntLookDied();
-                isLeader =false;
-                break;
-            case typeOfEnemys.killer:
-                HuntLookDied();
-                isLeader =false;
-                break;
-            default:
-                LookAtPlayer();
-                isLeader =true;
-                break;
-        }
-    }
+   
     private void OnTriggerEnter(Collider other)
         {
             if (other.gameObject.CompareTag("Bullet"))
             {
+                Debug.Log("la armadura es: " + armorEnemy);
                 armorEnemy--;
+                Debug.Log("DAÑO - la armadura es--: " + armorEnemy);
                 Destroy(other.gameObject);
                 if(armorEnemy==0){
                     if(isLeader){
@@ -130,5 +111,6 @@ public class EnemyController : MonoBehaviour
             }
             
         }
+   
   
 }

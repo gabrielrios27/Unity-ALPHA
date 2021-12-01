@@ -26,8 +26,9 @@ GameObject:
   - component: {fileID: 8158705167516995961}
   - component: {fileID: 6003119703586736402}
   - component: {fileID: 5168309139444604536}
+  - component: {fileID: 1143232858337624438}
   m_Layer: 0
-  m_Name: Enemy Leader
+  m_Name: Enemy Shooter
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -55,7 +56,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6437198929608042485}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: df4fbb687fe1f5643af149ab5471fe19, type: 3}
   m_Name: 
@@ -96,6 +97,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 0
+--- !u!114 &1143232858337624438
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6437198929608042485}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b344685dc2497594ba488b6003511fe5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myData: {fileID: 11400000, guid: 47fa2a22989ce2a46806867748569c9b, type: 2}
+  animEnemy: {fileID: 5113936261243514750}
 --- !u!1001 &3685569544035215567
 PrefabInstance:
   m_ObjectHideFlags: 0
