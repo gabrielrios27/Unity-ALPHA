@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   alienName: The Boss
   hp: 200
-  shield: 100
+  armor: 30
   speed: 3
-  distanceRay: 1
+  speedToLook: 2
   damageHit: 5
+  attackRange: 2.5

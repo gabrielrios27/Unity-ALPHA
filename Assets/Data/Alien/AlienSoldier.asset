@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   alienName: 'Cabo '
   hp: 100
-  shield: 50
-  speed: 30
-  distanceRay: 1.5
+  armor: 5
+  speed: 3
+  speedToLook: 2
   damageHit: 3
+  attackRange: 2

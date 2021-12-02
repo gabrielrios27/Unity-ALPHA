@@ -29,6 +29,8 @@ public class PlayerController : MonoBehaviour
         animPlayer.SetBool("isLeft", false);
         rb = GetComponent<Rigidbody>();
         GunCtrl = guns[0].GetComponent<GunController>();
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     // Update is called once per frame
