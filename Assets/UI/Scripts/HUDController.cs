@@ -10,34 +10,57 @@ public class HUDController : MonoBehaviour
     [SerializeField] private PlayerController playerController;
     [SerializeField] private List<GameObject> gunsImages;
     // Start is called before the first frame update
-    void Start()
+    private void Awake()
+    {
+        PlayerController.onLivesChanges+= OnLivesChangeHandler;
+        PlayerController.onGunChanges+= OnGunChangesHandler;
+        GunController.onAmoChange+= OnAmoChangeHandler;
+    }
+    private void Start()
     {
         
     }
-
-    // Update is called once per frame
     void Update()
     {
-        UpdateInfoUI();
+        // UpdateInfoUI();
     }
-    private void UpdateInfoUI(){
-        int[] playerInfo = playerController.GetPlayerInfo();
-        textLife.text = playerInfo[0] + "%";
-        textAmo.text = playerInfo[1] + " "; 
-        ChangeGunImageUI(playerInfo[2]);
-    }
-    private void ChangeGunImageUI(int indexGun){
+    private void OnGunChangesHandler(int indexGun){
         for (int i = 0; i < gunsImages.Count; i++)
             {
                 if(i == indexGun)
                 {
                     gunsImages[i].SetActive(true);
+                    
                 }
                 else
                 {
                     gunsImages[i].SetActive(false);
                 }
-
             }
     }
+    private void OnAmoChangeHandler(int amo){
+        textAmo.text = amo + " ";
+    }
+    private void OnLivesChangeHandler(int armor){
+        textLife.text = armor + "%";
+    }
+
+    // private void UpdateInfoUI(){
+    //     int[] playerInfo = playerController.GetPlayerInfo();
+    //     // ChangeGunImageUI(playerInfo[2]);
+    // }
+    // private void ChangeGunImageUI(int indexGun){
+    //     for (int i = 0; i < gunsImages.Count; i++)
+    //         {
+    //             if(i == indexGun)
+    //             {
+    //                 gunsImages[i].SetActive(true);
+    //             }
+    //             else
+    //             {
+    //                 gunsImages[i].SetActive(false);
+    //             }
+
+    //         }
+    // }
 }

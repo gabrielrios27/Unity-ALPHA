@@ -24,7 +24,14 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
-
+    private void Start()
+    {
+        PlayerController.onDeath+= GameOver;
+    }
+    private void GameOver()
+    {
+        scoreInstanciate = 0;
+    }
     public void addScore()
     {
         instance.scoreInstanciate += 1;  

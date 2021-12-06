@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class PlayerController : MonoBehaviour
 {
@@ -9,8 +10,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float speedPlayer = 0.5f;
     [SerializeField] private int armorPlayer = 100;
     [SerializeField] private Animator animPlayer;
-    [SerializeField] float jumpForce = 2f;
-    [SerializeField] LayerMask groundLayer;
+    [SerializeField] private float jumpForce = 2f;
+    [SerializeField] private LayerMask groundLayer;
     [SerializeField] private List<GameObject> guns;
     // [SerializeField] private GunController gumCtr;
     private float cameraAxis= 0;
@@ -20,6 +21,11 @@ public class PlayerController : MonoBehaviour
     private int[] PlayerInfo = {0, 0, 0};
     private GunController GunCtrl;
     private int SelectGun=0;
+
+    // eventos 
+    public static event Action onDeath;
+    public static event Action<int> onLivesChanges;
+    public static event Action<int> onGunChanges;
    
     // Start is called before the first frame update
     void Start()
@@ -31,6 +37,8 @@ public class PlayerController : MonoBehaviour
         GunCtrl = guns[0].GetComponent<GunController>();
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
+        onLivesChanges?.Invoke(armorPlayer);
+        onGunChanges?.Invoke(indexGuns);
     }
 
     // Update is called once per frame
@@ -49,9 +57,11 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.CompareTag("Enemy"))
         {
             armorPlayer--;
+            onLivesChanges?.Invoke(armorPlayer);
             Debug.Log("golpe");
             if(armorPlayer < 0)
             {
+                onDeath?.Invoke();
                 Debug.Log("GAME OVER");
                 Destroy(gameObject);
             }
@@ -175,7 +185,7 @@ public class PlayerController : MonoBehaviour
 
             }
     }
-     private void ChangeGun()
+    private void ChangeGun()
     {
         if (Input.GetKeyDown(KeyCode.E))
         {
@@ -185,6 +195,7 @@ public class PlayerController : MonoBehaviour
                 indexGuns = 0;
             }
             SwitchGuns(indexGuns);
+            onGunChanges?.Invoke(indexGuns);
         }
         if (Input.GetKeyDown(KeyCode.Q))
         {
@@ -194,6 +205,7 @@ public class PlayerController : MonoBehaviour
                 indexGuns = guns.Count - 1;
             }
             SwitchGuns(indexGuns);
+            onGunChanges?.Invoke(indexGuns);
         }
     }
     private void UpdatePlayerInfo(){

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class GunController : MonoBehaviour
 {
@@ -16,15 +17,25 @@ public class GunController : MonoBehaviour
     [SerializeField] private bool isShoot= false;
     [SerializeField] private int bulletQuantity = 100;
     [SerializeField] private int bulletCharge;
+    // [SerializeField] private int indexGun;
     private bool reloadFlag = false;
   
     private GameObject player;
+   
+    // eventos
+    public static event Action<int> onAmoChange;
+    private void Awake()
+    {
+        
+    }
     
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.Find("Player");
         bulletCharge = bulletQuantity;
+        PlayerController.onGunChanges+= OnGunChangeHandler;
+        onAmoChange?.Invoke(bulletCharge);
     }
 
     // Update is called once per frame
@@ -35,6 +46,7 @@ public class GunController : MonoBehaviour
             isShoot=true;
             Instantiate(prefabBullet,bulletPosition.transform.position , Quaternion.Euler(rotationPlayer.eulerAngles.x,rotationPlayer.eulerAngles.y,rotationPlayer.eulerAngles.z));
             bulletCharge--;
+            onAmoChange?.Invoke(bulletCharge);
         }
         if(bulletCharge < 1){
             timeReloadPass+=Time.deltaTime;
@@ -44,6 +56,7 @@ public class GunController : MonoBehaviour
             reloadFlag=false;
             timeReloadPass=0;
             bulletCharge = bulletQuantity;
+            onAmoChange?.Invoke(bulletCharge);
         }
         if(isShoot){
             timePass+=Time.deltaTime;
@@ -52,7 +65,10 @@ public class GunController : MonoBehaviour
             isShoot=false;
             timePass=0;
         }
-                
+    }
+    private void OnGunChangeHandler(int indexGun){
+        onAmoChange?.Invoke(bulletCharge);
+        Debug.Log("cambio arma - cambia texto??");
     }
     public bool GetReloadFlag(){
         return reloadFlag;
