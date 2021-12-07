@@ -228,8 +228,10 @@ public class PlayerController : MonoBehaviour
     }
     public void OnReloadStartAnim(){
         animPlayer.SetBool("isReload", true);
+        Debug.Log("Evento Unity OnReloadStart - llamado por : GunController - recibido por PlayerController");
      }
     public void OnReloadEndAnim(){
         animPlayer.SetBool("isReload", false);
+         Debug.Log("Evento Unity OnReloadEnd - llamado por : GunController - recibido por PlayerController");
     }
 }

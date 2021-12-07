@@ -30,7 +30,7 @@ public class HUDController : MonoBehaviour
                 if(i == indexGun)
                 {
                     gunsImages[i].SetActive(true);
-                    
+                    Debug.Log("Evento OnGunChanges - llamado por : PlayerController - recibido por HUDController");
                 }
                 else
                 {
@@ -40,8 +40,10 @@ public class HUDController : MonoBehaviour
     }
     private void OnAmoChangeHandler(int amo){
         textAmo.text = amo + " ";
+        Debug.Log("Evento OnAmoChange - llamado por : GunController - recibido por HUDController");
     }
     private void OnLivesChangeHandler(int armor){
         textLife.text = armor + "%";
+        Debug.Log("Evento OnLivesChange - llamado por : PlayerController - recibido por HUDController");
     }
 }
