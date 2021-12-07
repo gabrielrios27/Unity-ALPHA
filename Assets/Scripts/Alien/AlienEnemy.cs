@@ -57,7 +57,6 @@ public class AlienEnemy : MonoBehaviour
             isAttack = false;
             isRun = true;
             rbEnemy.AddForce(direction.normalized * myData.Speed, ForceMode.Impulse);
-    
         }
         else
         {
@@ -90,9 +89,7 @@ public class AlienEnemy : MonoBehaviour
         {
             if (other.gameObject.CompareTag("Bullet"))
             {
-                Debug.Log("la armadura es: " + armorEnemy);
                 armorEnemy--;
-                Debug.Log("DAÑO - la armadura es--: " + armorEnemy);
                 Destroy(other.gameObject);
                 if(armorEnemy==0){
                     if(isLeader){
