@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using UnityEngine.Events;
 
 public class GunController : MonoBehaviour
 {
@@ -16,7 +17,9 @@ public class GunController : MonoBehaviour
     [SerializeField] private float timeReloadPass=0;
     [SerializeField] private bool isShoot= false;
     [SerializeField] private int bulletQuantity = 100;
-    [SerializeField] private int bulletCharge;
+    private int bulletCharge;
+    [SerializeField] private int indexGun;
+
     // [SerializeField] private int indexGun;
     private bool reloadFlag = false;
   
@@ -24,6 +27,10 @@ public class GunController : MonoBehaviour
    
     // eventos
     public static event Action<int> onAmoChange;
+    [SerializeField] private UnityEvent onReloadStart;
+    [SerializeField] private UnityEvent onReloadEnd;
+
+
     private void Awake()
     {
         
@@ -36,6 +43,7 @@ public class GunController : MonoBehaviour
         bulletCharge = bulletQuantity;
         PlayerController.onGunChanges+= OnGunChangeHandler;
         onAmoChange?.Invoke(bulletCharge);
+
     }
 
     // Update is called once per frame
@@ -51,10 +59,12 @@ public class GunController : MonoBehaviour
         if(bulletCharge < 1){
             timeReloadPass+=Time.deltaTime;
             reloadFlag = true;
+            onReloadStart?.Invoke();
         }
         if(timeReloadPass > reloadTime){
             reloadFlag=false;
             timeReloadPass=0;
+            onReloadEnd?.Invoke();
             bulletCharge = bulletQuantity;
             onAmoChange?.Invoke(bulletCharge);
         }
@@ -66,10 +76,11 @@ public class GunController : MonoBehaviour
             timePass=0;
         }
     }
-    private void OnGunChangeHandler(int indexGun){
-        onAmoChange?.Invoke(bulletCharge);
-        Debug.Log("cambio arma - cambia texto??");
-    }
+    private void OnGunChangeHandler(int indexGunchange){
+        if(indexGunchange == indexGun){
+             onAmoChange?.Invoke(bulletCharge);
+        }
+     }
     public bool GetReloadFlag(){
         return reloadFlag;
     }

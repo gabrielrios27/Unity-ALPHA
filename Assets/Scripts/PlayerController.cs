@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using UnityEngine.Events;
 
 public class PlayerController : MonoBehaviour
 {
@@ -21,11 +22,12 @@ public class PlayerController : MonoBehaviour
     private int[] PlayerInfo = {0, 0, 0};
     private GunController GunCtrl;
     private int SelectGun=0;
-
+ 
     // eventos 
     public static event Action onDeath;
     public static event Action<int> onLivesChanges;
     public static event Action<int> onGunChanges;
+    [SerializeField] private UnityEvent OnTouchBox;
    
     // Start is called before the first frame update
     void Start()
@@ -50,7 +52,7 @@ public class PlayerController : MonoBehaviour
         AnimHorizontal();
         ChangeGun();
         UpdatePlayerInfo();
-        ReloadAnim();
+        // ReloadAnim();
     }
     private void OnCollisionEnter(Collision collision)
     {
@@ -72,19 +74,23 @@ public class PlayerController : MonoBehaviour
         if (other.gameObject.CompareTag("EnemyHand"))
         {
             armorPlayer--;
+            onLivesChanges?.Invoke(armorPlayer);
             Debug.Log("golpe");
             if(armorPlayer < 1)
             {
                 Debug.Log("GAME OVER");
+                onDeath?.Invoke();
                 Destroy(gameObject);
             }
         }
         if (other.gameObject.CompareTag("BulletAlien"))
             {
                 armorPlayer-=3;
+                onLivesChanges?.Invoke(armorPlayer);
                 Destroy(other.gameObject);
                 if(armorPlayer< 1){
                      Debug.Log("GAME OVER");
+                     onDeath?.Invoke();
                      Destroy(gameObject);
                 }
   
@@ -96,7 +102,8 @@ public class PlayerController : MonoBehaviour
         {
             armorPlayer++;
             Debug.Log("vida + 1");
-           
+            OnTouchBox?.Invoke();
+            onLivesChanges?.Invoke(armorPlayer);
         }
     }
     private void Move()
@@ -113,7 +120,6 @@ public class PlayerController : MonoBehaviour
         else
         {
             animPlayer.SetBool("isRun", false);
-            // transform.GetChild(0).localEulerAngles = new Vector3(0,angleStay.y + 40,0);
         }
         
     }
@@ -219,5 +225,11 @@ public class PlayerController : MonoBehaviour
     }
     private void ReloadAnim(){
         animPlayer.SetBool("isReload", GunCtrl.GetReloadFlag());
+    }
+    public void OnReloadStartAnim(){
+        animPlayer.SetBool("isReload", true);
+     }
+    public void OnReloadEndAnim(){
+        animPlayer.SetBool("isReload", false);
     }
 }

@@ -22,7 +22,7 @@ public class HUDController : MonoBehaviour
     }
     void Update()
     {
-        // UpdateInfoUI();
+ 
     }
     private void OnGunChangesHandler(int indexGun){
         for (int i = 0; i < gunsImages.Count; i++)
@@ -44,23 +44,4 @@ public class HUDController : MonoBehaviour
     private void OnLivesChangeHandler(int armor){
         textLife.text = armor + "%";
     }
-
-    // private void UpdateInfoUI(){
-    //     int[] playerInfo = playerController.GetPlayerInfo();
-    //     // ChangeGunImageUI(playerInfo[2]);
-    // }
-    // private void ChangeGunImageUI(int indexGun){
-    //     for (int i = 0; i < gunsImages.Count; i++)
-    //         {
-    //             if(i == indexGun)
-    //             {
-    //                 gunsImages[i].SetActive(true);
-    //             }
-    //             else
-    //             {
-    //                 gunsImages[i].SetActive(false);
-    //             }
-
-    //         }
-    // }
 }
