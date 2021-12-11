@@ -7,13 +7,13 @@ public class HUDController : MonoBehaviour
 {
     [SerializeField] private Text textLife;
     [SerializeField] private Text textAmo;
-    [SerializeField] private PlayerController playerController;
+    [SerializeField] private PlayerCharacterController playerCharacterController;
     [SerializeField] private List<GameObject> gunsImages;
     // Start is called before the first frame update
     private void Awake()
     {
-        PlayerController.onLivesChanges+= OnLivesChangeHandler;
-        PlayerController.onGunChanges+= OnGunChangesHandler;
+        PlayerCharacterController.onLivesChange+= OnLivesChangeHandler;
+        PlayerCharacterController.onGunChanges+= OnGunChangesHandler;
         GunController.onAmoChange+= OnAmoChangeHandler;
     }
     private void Start()
@@ -30,7 +30,7 @@ public class HUDController : MonoBehaviour
                 if(i == indexGun)
                 {
                     gunsImages[i].SetActive(true);
-                    Debug.Log("Evento OnGunChanges - llamado por : PlayerController - recibido por HUDController");
+                    Debug.Log("Evento OnGunChanges - llamado por : PlayerCharacterController - recibido por HUDController");
                 }
                 else
                 {
@@ -44,6 +44,6 @@ public class HUDController : MonoBehaviour
     }
     private void OnLivesChangeHandler(int armor){
         textLife.text = armor + "%";
-        Debug.Log("Evento OnLivesChange - llamado por : PlayerController - recibido por HUDController");
+        Debug.Log("Evento OnLivesChange - llamado por : PlayerCharacterController - recibido por HUDController");
     }
 }

@@ -33,17 +33,16 @@ public class GunController : MonoBehaviour
 
     private void Awake()
     {
-        
+        bulletCharge = bulletQuantity;
+        onAmoChange?.Invoke(bulletCharge);
     }
     
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.Find("Player");
-        bulletCharge = bulletQuantity;
-        PlayerController.onGunChanges+= OnGunChangeHandler;
-        onAmoChange?.Invoke(bulletCharge);
-
+        
+        PlayerCharacterController.onGunChanges+= OnGunChangeHandler;
     }
 
     // Update is called once per frame
@@ -78,9 +77,11 @@ public class GunController : MonoBehaviour
     }
     private void OnGunChangeHandler(int indexGunchange){
         if(indexGunchange == indexGun){
-             onAmoChange?.Invoke(bulletCharge);
+            Debug.Log("el indexgunchange es :" + indexGunchange);
+            Debug.Log("el indexgun del arma es :" + indexGun);
+            onAmoChange?.Invoke(bulletCharge);
         }
-     }
+    }
     public bool GetReloadFlag(){
         return reloadFlag;
     }

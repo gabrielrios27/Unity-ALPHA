@@ -26,12 +26,12 @@ public class GameManager : MonoBehaviour
     }
     private void Start()
     {
-        PlayerController.onDeath+= GameOver;
+        PlayerCharacterController.onDeath+= GameOver;
     }
     private void GameOver()
     {
         scoreInstanciate = 0;
-        Debug.Log("Evento onDeath - llamado por : PlayerController - recibido por GameManager");
+        Debug.Log("Evento onDeath - llamado por : PlayerCharacterController - recibido por GameManager");
     }
     public void addScore()
     {
