@@ -969,7 +969,8 @@ GameObject:
   m_Component:
   - component: {fileID: 7198663692627315487}
   - component: {fileID: 8194117831562390141}
-  m_Layer: 0
+  - component: {fileID: 9090383611325363251}
+  m_Layer: 11
   m_Name: Mutant:LeftHand
   m_TagString: EnemyHand
   m_Icon: {fileID: 0}
@@ -1004,6 +1005,23 @@ CapsuleCollider:
   m_Height: 0.8827271
   m_Direction: 0
   m_Center: {x: -0.20545807, y: 0.008053947, z: 0.06799257}
+--- !u!114 &9090383611325363251
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5484893771564293158}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b9a305e18de0c04dbd257a21cd47087, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sharedProfile: {fileID: 11400000, guid: 9cef364b50da6954b9e27ba55de8039d, type: 2}
+  isGlobal: 0
+  blendDistance: 1
+  weight: 1
+  priority: 0
 --- !u!1 &5728382203662908899
 GameObject:
   m_ObjectHideFlags: 0

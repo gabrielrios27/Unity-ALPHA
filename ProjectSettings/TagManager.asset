@@ -19,9 +19,9 @@ TagManager:
   - Ground
   - 
   - 
-  - 
-  - 
-  - 
+  - GlobalPostProcessing
+  - Lv1GlobalPostProcessing
+  - Lv1FirstPersonGlobalPostProcessing
   - 
   - 
   - 

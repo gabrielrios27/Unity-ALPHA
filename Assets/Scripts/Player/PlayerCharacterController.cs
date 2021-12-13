@@ -29,6 +29,7 @@ public class PlayerCharacterController : MonoBehaviour
     public static event Action<int> onLivesChange;
     public static event Action<int> onGunChanges;
     [SerializeField] private UnityEvent OnTouchBox;
+    public static event Action<bool> onRun;
     private void Awake()
     {
         onGunChanges?.Invoke(indexGuns);
@@ -97,10 +98,12 @@ public class PlayerCharacterController : MonoBehaviour
                 Vector3 moveDir = Quaternion.Euler(0, targetAngle, 0) * Vector3.forward;
                 animPlayer.SetBool("isRun", true);
                 cc.Move(moveDir.normalized * speed * Time.deltaTime);
+                onRun?.Invoke(true);
             }
             else
             {
                 animPlayer.SetBool("isRun", false);
+                onRun?.Invoke(false);
             }
         } else{
             if (direction.magnitude >= 0.1f)

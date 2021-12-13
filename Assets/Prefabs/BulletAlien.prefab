@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6065776247276274364}
   - component: {fileID: 6549285496975034526}
   - component: {fileID: 4780830780802454989}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cylinder
   m_TagString: BulletAlien
   m_Icon: {fileID: 0}
