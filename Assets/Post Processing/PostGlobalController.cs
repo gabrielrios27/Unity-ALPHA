@@ -26,6 +26,7 @@ public class PostGlobalController : MonoBehaviour
         // ColorGrading colorFX;
         globalVolume.profile.TryGetSettings(out lensFX);
         lensFX.active = status;
+        
     }
 
 }
