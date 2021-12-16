@@ -15,14 +15,18 @@ public class PlayerCharacterController : MonoBehaviour
     //RUNTIME DATA
     [SerializeField] private Vector3 velocity;
     [SerializeField] private Transform cam;
+    [SerializeField] private Transform camFP;
+    private Transform selectedCam;
     [SerializeField] private float mouseSensitivity = 2f;
     private int indexGuns = 0;
     private int SelectGun=0;
+    private int indexSelectedCamera=0;
 
     //PRIVATE COMPONENTS REFERENCE
     [SerializeField] private Animator animPlayer;
     private CharacterController cc;
     private GunController GunCtrl;
+
 
     //EVENTS
     public static event Action onDeath;
@@ -33,7 +37,7 @@ public class PlayerCharacterController : MonoBehaviour
     private void Awake()
     {
         onGunChanges?.Invoke(indexGuns);
-        
+        selectedCam=cam;
     }
     private void Start()
     {
@@ -45,7 +49,7 @@ public class PlayerCharacterController : MonoBehaviour
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
         GunCtrl = guns[0].GetComponent<GunController>();
-        
+        CamerasController.onCameraChange += onCamerasChangesHandler;
     }
     void Update()
     {
@@ -78,7 +82,15 @@ public class PlayerCharacterController : MonoBehaviour
         ChangeGun();
     }
 
-
+    private void onCamerasChangesHandler(int indexCamera){
+        if(indexCamera==0){
+            selectedCam=cam;
+        } else if(indexCamera==1){
+            selectedCam=camFP;
+        } else{
+            Debug.Log("la camara elegida no existe");
+        }
+    }
     public void Rotate()
     {
         float horizontalRotation = Input.GetAxis("Mouse X");
@@ -94,7 +106,8 @@ public class PlayerCharacterController : MonoBehaviour
         if (cc.isGrounded){
             if (direction.magnitude >= 0.1f)
             {
-                float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
+                
+                float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + selectedCam.eulerAngles.y;
                 Vector3 moveDir = Quaternion.Euler(0, targetAngle, 0) * Vector3.forward;
                 animPlayer.SetBool("isRun", true);
                 cc.Move(moveDir.normalized * speed * Time.deltaTime);
@@ -108,7 +121,7 @@ public class PlayerCharacterController : MonoBehaviour
         } else{
             if (direction.magnitude >= 0.1f)
             {
-                float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
+                float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + selectedCam.eulerAngles.y;
                 Vector3 moveDir = Quaternion.Euler(0, targetAngle, 0) * Vector3.forward;
                 animPlayer.SetBool("isRun", true);
                 cc.Move(moveDir.normalized * 5f * Time.deltaTime);

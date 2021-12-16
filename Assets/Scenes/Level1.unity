@@ -480,6 +480,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 131914848, guid: 887c30c60d591c249a89126b157783cc, type: 3}
   m_PrefabInstance: {fileID: 6767814372591175449}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &131914851 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 131914851, guid: 887c30c60d591c249a89126b157783cc, type: 3}
+  m_PrefabInstance: {fileID: 6767814372591175449}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &131914852
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5426,6 +5431,10 @@ PrefabInstance:
       propertyPath: cam
       value: 
       objectReference: {fileID: 963194228}
+    - target: {fileID: 1778527509, guid: 887c30c60d591c249a89126b157783cc, type: 3}
+      propertyPath: camFP
+      value: 
+      objectReference: {fileID: 131914851}
     - target: {fileID: 1778527509, guid: 887c30c60d591c249a89126b157783cc, type: 3}
       propertyPath: OnTouchBox.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 

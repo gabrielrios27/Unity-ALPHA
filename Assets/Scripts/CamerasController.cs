@@ -1,11 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
+
 
 public class CamerasController : MonoBehaviour
 {
     [SerializeField] private List<GameObject> cameras;
     private int indexCamera = 0;
+    // eventos
+    public static event Action<int> onCameraChange;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,7 +19,7 @@ public class CamerasController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.P))
+        if (Input.GetKeyDown(KeyCode.C))
         {
             indexCamera++;
             if (indexCamera == cameras.Count)
@@ -23,16 +27,9 @@ public class CamerasController : MonoBehaviour
                 indexCamera = 0;
             }
             SwitchCameras(indexCamera);
+            onCameraChange?.Invoke(indexCamera);
         }
-        if (Input.GetKeyDown(KeyCode.O))
-        {
-            indexCamera--;
-            if (indexCamera < 0)
-            {
-                indexCamera = cameras.Count - 1;
-            }
-            SwitchCameras(indexCamera);
-        }
+      
     }
      private void SwitchCameras(int index)
     {
