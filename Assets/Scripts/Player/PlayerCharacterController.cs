@@ -58,8 +58,10 @@ public class PlayerCharacterController : MonoBehaviour
         //ROTAR
         Rotate();
         //SALTAR
+        Debug.Log("esta en tierra: "+ cc.isGrounded);
         if (Input.GetButtonDown("Jump") && cc.isGrounded)
         {
+            Debug.Log("esta en tierra: "+ cc.isGrounded);
             Debug.Log("salto");
             // animPlayer.SetBool("isRun", false);
             animPlayer.SetTrigger("jump");
@@ -111,6 +113,8 @@ public class PlayerCharacterController : MonoBehaviour
                 Vector3 moveDir = Quaternion.Euler(0, targetAngle, 0) * Vector3.forward;
                 animPlayer.SetBool("isRun", true);
                 cc.Move(moveDir.normalized * speed * Time.deltaTime);
+                animPlayer.SetFloat("movementX", direction.x);
+                animPlayer.SetFloat("movementZ", direction.z);
                 onRun?.Invoke(true);
             }
             else

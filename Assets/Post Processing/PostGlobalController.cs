@@ -21,7 +21,6 @@ public class PostGlobalController : MonoBehaviour
 
     public void StatusLensDistortionEffect(bool status)
     {
-        Debug.Log("corre: "+ status);
         LensDistortion lensFX;
         // ColorGrading colorFX;
         globalVolume.profile.TryGetSettings(out lensFX);
