@@ -88,4 +88,8 @@ public class GunController : MonoBehaviour
     public int GetBulletCharge(){
         return bulletCharge;
     }
+    private void OnDestroy(){
+        PlayerCharacterController.onGunChanges-= OnGunChangeHandler;
+    }
+
 }

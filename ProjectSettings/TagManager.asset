@@ -9,6 +9,8 @@ TagManager:
   - BoxLife
   - Enemy
   - BulletAlien
+  - PortalFreeWorld
+  - PortalSpecialTargets
   layers:
   - Default
   - TransparentFX

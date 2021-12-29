@@ -33,6 +33,9 @@ public class GameManager : MonoBehaviour
         scoreInstanciate = 0;
         Debug.Log("Evento onDeath - llamado por : PlayerCharacterController - recibido por GameManager");
     }
+    private void OnDestroy(){
+       PlayerCharacterController.onDeath-= GameOver;
+    }
     public void addScore()
     {
         instance.scoreInstanciate += 1;  

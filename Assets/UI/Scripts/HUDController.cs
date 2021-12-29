@@ -16,19 +16,16 @@ public class HUDController : MonoBehaviour
         PlayerCharacterController.onGunChanges+= OnGunChangesHandler;
         GunController.onAmoChange+= OnAmoChangeHandler;
     }
-    private void Start()
-    {
-        
-    }
-    void Update()
-    {
- 
+    private void OnDestroy(){
+        PlayerCharacterController.onLivesChange-= OnLivesChangeHandler;
+        PlayerCharacterController.onGunChanges-= OnGunChangesHandler;
+        GunController.onAmoChange-= OnAmoChangeHandler;
     }
     private void OnGunChangesHandler(int indexGun){
         for (int i = 0; i < gunsImages.Count; i++)
             {
                 if(i == indexGun)
-                {
+                { 
                     gunsImages[i].SetActive(true);
                     Debug.Log("Evento OnGunChanges - llamado por : PlayerCharacterController - recibido por HUDController");
                 }

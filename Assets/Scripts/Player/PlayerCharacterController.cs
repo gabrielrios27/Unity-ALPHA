@@ -3,12 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 public class PlayerCharacterController : MonoBehaviour
 {
     //DESING DATA [CANDIDATO A OBJETO SERIALIZADO]
     [SerializeField] private int lifePlayer = 100;
     [SerializeField] private float speed = 12f;
+    [SerializeField] private float speedFaster = 18f;
+    private float speedPlayer;
     [SerializeField] private float Gravity = -9.81f;
     [SerializeField] private List<GameObject> guns;
 
@@ -20,7 +23,6 @@ public class PlayerCharacterController : MonoBehaviour
     [SerializeField] private float mouseSensitivity = 2f;
     private int indexGuns = 0;
     private int SelectGun=0;
-    private int indexSelectedCamera=0;
 
     //PRIVATE COMPONENTS REFERENCE
     [SerializeField] private Animator animPlayer;
@@ -36,11 +38,13 @@ public class PlayerCharacterController : MonoBehaviour
     public static event Action<bool> onRun;
     private void Awake()
     {
-        onGunChanges?.Invoke(indexGuns);
+       
         selectedCam=cam;
+        speedPlayer = speed;
     }
     private void Start()
     {
+        onGunChanges?.Invoke(indexGuns);
         cc = GetComponent<CharacterController>();
         animPlayer.SetBool("isRun", false);
         animPlayer.SetBool("isRight", false);
@@ -58,12 +62,9 @@ public class PlayerCharacterController : MonoBehaviour
         //ROTAR
         Rotate();
         //SALTAR
-        Debug.Log("esta en tierra: "+ cc.isGrounded);
         if (Input.GetButtonDown("Jump") && cc.isGrounded)
         {
-            Debug.Log("esta en tierra: "+ cc.isGrounded);
-            Debug.Log("salto");
-            // animPlayer.SetBool("isRun", false);
+           // animPlayer.SetBool("isRun", false);
             animPlayer.SetTrigger("jump");
             velocity.y = Mathf.Sqrt(-5f * Gravity);
         }
@@ -82,6 +83,7 @@ public class PlayerCharacterController : MonoBehaviour
 
         AnimHorizontal();
         ChangeGun();
+        RunFaster();
     }
 
     private void onCamerasChangesHandler(int indexCamera){
@@ -108,11 +110,10 @@ public class PlayerCharacterController : MonoBehaviour
         if (cc.isGrounded){
             if (direction.magnitude >= 0.1f)
             {
-                
                 float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + selectedCam.eulerAngles.y;
                 Vector3 moveDir = Quaternion.Euler(0, targetAngle, 0) * Vector3.forward;
                 animPlayer.SetBool("isRun", true);
-                cc.Move(moveDir.normalized * speed * Time.deltaTime);
+                cc.Move(moveDir.normalized * speedPlayer * Time.deltaTime);
                 animPlayer.SetFloat("movementX", direction.x);
                 animPlayer.SetFloat("movementZ", direction.z);
                 onRun?.Invoke(true);
@@ -247,7 +248,6 @@ public class PlayerCharacterController : MonoBehaviour
                      onDeath?.Invoke();
                      Destroy(gameObject);
                 }
-  
             }
     }
     private void OnTriggerExit(Collider other)
@@ -259,6 +259,11 @@ public class PlayerCharacterController : MonoBehaviour
             OnTouchBox?.Invoke();
             onLivesChange?.Invoke(lifePlayer);
         }
+        if (other.gameObject.CompareTag("PortalFreeWorld"))
+            {
+                SceneManager.LoadScene("Level2Destroyed_city");
+                Destroy(gameObject);
+            }
     } 
     private void ReloadAnim(){
         animPlayer.SetBool("isReload", GunCtrl.GetReloadFlag());
@@ -271,16 +276,20 @@ public class PlayerCharacterController : MonoBehaviour
         animPlayer.SetBool("isReload", false);
          Debug.Log("Evento Unity OnReloadEnd - llamado por : GunController - recibido por PlayerCharacterController");
     }
-    
-
-    /*
-    private void OnControllerColliderHit(ControllerColliderHit hit)
-    {
-        if (hit.gameObject.CompareTag("Ground"))
+    public void RunFaster(){
+        if (Input.GetKeyDown(KeyCode.LeftShift))
         {
-            Debug.Log("ESTOY EN EL PISO");
+            animPlayer.SetBool("isRunFaster", true);
+            speedPlayer=speedFaster;
         }
+        if (Input.GetKeyUp(KeyCode.LeftShift))
+        {
+            animPlayer.SetBool("isRunFaster", false);
+            speedPlayer=speed;
+        }
+       
     }
-    */
-
+    private void OnDestroy(){
+        CamerasController.onCameraChange -= onCamerasChangesHandler;
+    }
 }
