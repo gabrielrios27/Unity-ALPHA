@@ -249,6 +249,10 @@ public class PlayerCharacterController : MonoBehaviour
                      Destroy(gameObject);
                 }
             }
+        if (other.gameObject.CompareTag("ProjectorInfo"))
+            {
+                Debug.Log("presione letra para obtener memoria");
+            }   
     }
     private void OnTriggerExit(Collider other)
     {
@@ -292,4 +296,5 @@ public class PlayerCharacterController : MonoBehaviour
     private void OnDestroy(){
         CamerasController.onCameraChange -= onCamerasChangesHandler;
     }
+    
 }

@@ -11,6 +11,8 @@ TagManager:
   - BulletAlien
   - PortalFreeWorld
   - PortalSpecialTargets
+  - FxTemporaire
+  - ProjectorInfo
   layers:
   - Default
   - TransparentFX
