@@ -236,7 +236,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletOrigen: {fileID: 9206127529525187459}
-  distanceRay: 10
+  distanceRay: 65
   shootCooldown: 2
   timerShoot: 0
   bulletPrefab: {fileID: 5366292973436683876, guid: 0b6ef5f15a663444c86ee95534ffc784, type: 3}

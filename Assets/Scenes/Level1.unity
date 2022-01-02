@@ -3220,6 +3220,13 @@ MonoBehaviour:
     FarClipPlane: 1000
     Dutch: 0
     LensShift: {x: 0, y: 0}
+    Iso: 200
+    ShutterSpeed: 0.005
+    Aperture: 16
+    BladeCount: 5
+    Curvature: {x: 2, y: 11}
+    BarrelClipping: 0.25
+    Anamorphism: 0
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -3572,7 +3579,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4778209617555487851, guid: 8c90b15534d502f43a7969472c1631c0, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4778209617555487851, guid: 8c90b15534d502f43a7969472c1631c0, type: 3}
       propertyPath: m_TagString
@@ -4281,6 +4288,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8966e38604b26c848a113763a545945d, type: 3}
+--- !u!1 &1599499079 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4754438760408435372, guid: 887c30c60d591c249a89126b157783cc, type: 3}
+  m_PrefabInstance: {fileID: 6767814372591175449}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1662389343
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4649,6 +4661,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -4358313047339785694, guid: 8c90b15534d502f43a7969472c1631c0, type: 3}
+      propertyPath: character
+      value: 
+      objectReference: {fileID: 1599499079}
     - target: {fileID: 1600221078008617674, guid: 8c90b15534d502f43a7969472c1631c0, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -4735,7 +4751,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4778209617555487851, guid: 8c90b15534d502f43a7969472c1631c0, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4778209617555487851, guid: 8c90b15534d502f43a7969472c1631c0, type: 3}
       propertyPath: m_TagString

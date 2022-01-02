@@ -187,7 +187,7 @@ public class PlayerCharacterController : MonoBehaviour
     }
     private void ChangeGun()
     {
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             indexGuns++;
             if (indexGuns == guns.Count)
@@ -197,7 +197,7 @@ public class PlayerCharacterController : MonoBehaviour
             SwitchGuns(indexGuns);
             onGunChanges?.Invoke(indexGuns);
         }
-        if (Input.GetKeyDown(KeyCode.Q))
+        if (Input.GetKeyDown(KeyCode.Alpha2))
         {
             indexGuns--;
             if (indexGuns < 0)
