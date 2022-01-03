@@ -31,4 +31,5 @@ public class AlienShooter : AlienEnemy
 
         transform.position += transform.forward * speedPatrol * Time.deltaTime;
     }
+    
 }

@@ -1,95 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &6009020988706078679
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 6009020988706078664}
-  m_Layer: 0
-  m_Name: WP (4)
-  m_TagString: Untagged
-  m_Icon: {fileID: 2800000, guid: 14a467a08dcdd6d41bcb8510fa01b526, type: 3}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &6009020988706078664
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6009020988706078679}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -19, y: 0, z: -22.2}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 6009020990560950774}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &6009020988742802761
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 6009020988742802762}
-  m_Layer: 0
-  m_Name: WP (5)
-  m_TagString: Untagged
-  m_Icon: {fileID: 2800000, guid: 14a467a08dcdd6d41bcb8510fa01b526, type: 3}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &6009020988742802762
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6009020988742802761}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -14.3, y: 0, z: -76}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 6009020990560950774}
-  m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &6009020989542343402
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 6009020989542343403}
-  m_Layer: 0
-  m_Name: WP (3)
-  m_TagString: Untagged
-  m_Icon: {fileID: 2800000, guid: 14a467a08dcdd6d41bcb8510fa01b526, type: 3}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &6009020989542343403
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6009020989542343402}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -33, y: 0, z: 8.4}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 6009020990560950774}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6009020989566089126
 GameObject:
   m_ObjectHideFlags: 0
@@ -242,9 +152,6 @@ Transform:
   - {fileID: 6009020989645260257}
   - {fileID: 6009020989936611649}
   - {fileID: 6009020989866275334}
-  - {fileID: 6009020989542343403}
-  - {fileID: 6009020988706078664}
-  - {fileID: 6009020988742802762}
   m_Father: {fileID: 6009020989566089127}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -282,15 +189,15 @@ PrefabInstance:
     - target: {fileID: 1143232858337624438, guid: ec05f87c13195d54a9e902fce08a52f1, type: 3}
       propertyPath: waypoints.Array.data[3]
       value: 
-      objectReference: {fileID: 6009020989542343403}
+      objectReference: {fileID: 0}
     - target: {fileID: 1143232858337624438, guid: ec05f87c13195d54a9e902fce08a52f1, type: 3}
       propertyPath: waypoints.Array.data[4]
       value: 
-      objectReference: {fileID: 6009020988706078664}
+      objectReference: {fileID: 0}
     - target: {fileID: 1143232858337624438, guid: ec05f87c13195d54a9e902fce08a52f1, type: 3}
       propertyPath: waypoints.Array.data[5]
       value: 
-      objectReference: {fileID: 6009020988742802762}
+      objectReference: {fileID: 0}
     - target: {fileID: 1143232858337624438, guid: ec05f87c13195d54a9e902fce08a52f1, type: 3}
       propertyPath: waypoints.Array.data[6]
       value: 
@@ -395,7 +302,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy Shooter
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8158705167516995961, guid: ec05f87c13195d54a9e902fce08a52f1, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: ec05f87c13195d54a9e902fce08a52f1, type: 3}
 --- !u!4 &1662350865750193382 stripped
 Transform:

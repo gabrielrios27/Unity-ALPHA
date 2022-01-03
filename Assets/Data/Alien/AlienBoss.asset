@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: AlienBoss
   m_EditorClassIdentifier: 
   alienName: The Boss
-  hp: 10000
+  hp: 50
   armor: 30
   speed: 3
   speedToLook: 2
   damageHit: 10
-  attackRange: 2.5
+  attackRange: 2

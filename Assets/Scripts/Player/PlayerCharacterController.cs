@@ -4,6 +4,7 @@ using UnityEngine;
 using System;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PlayerCharacterController : MonoBehaviour
 {
@@ -32,10 +33,16 @@ public class PlayerCharacterController : MonoBehaviour
 
     //EVENTS
     public static event Action onDeath;
+    public static event Action onCloseProjector;
+    public static event Action onFarAwayProjector;
+    public static event Action onPressE;
     public static event Action<int> onLivesChange;
     public static event Action<int> onGunChanges;
     [SerializeField] private UnityEvent OnTouchBox;
     public static event Action<bool> onRun;
+    [SerializeField] private Text textGetInfo;
+    [SerializeField] private Text pressE;
+    private bool isCloseProjector=false;
     private void Awake()
     {
        
@@ -64,19 +71,9 @@ public class PlayerCharacterController : MonoBehaviour
         //SALTAR
         if (Input.GetButtonDown("Jump") && cc.isGrounded)
         {
-           // animPlayer.SetBool("isRun", false);
             animPlayer.SetTrigger("jump");
             velocity.y = Mathf.Sqrt(-5f * Gravity);
         }
-        //GOLPEAR
-        // if (Input.GetKeyDown(KeyCode.F))
-        // {
-        //     animPlayer.SetBool("isPunch", true);
-        // }
-        // if (Input.GetKeyUp(KeyCode.F))
-        // {
-        //     animPlayer.SetBool("isPunch", false);
-        // }
         //APLICAR GRAVEDAD
         velocity.y += Gravity * Time.deltaTime;
         cc.Move(velocity * Time.deltaTime);
@@ -84,6 +81,8 @@ public class PlayerCharacterController : MonoBehaviour
         AnimHorizontal();
         ChangeGun();
         RunFaster();
+        OnEscClick();
+        IsCloseProjector();
     }
 
     private void onCamerasChangesHandler(int indexCamera){
@@ -251,24 +250,34 @@ public class PlayerCharacterController : MonoBehaviour
             }
         if (other.gameObject.CompareTag("ProjectorInfo"))
             {
+                isCloseProjector=true;
                 Debug.Log("presione letra para obtener memoria");
+                onCloseProjector?.Invoke();
             }   
     }
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.CompareTag("BoxLife"))
-        {
-            lifePlayer++;
-            Debug.Log("vida + 1");
-            OnTouchBox?.Invoke();
-            onLivesChange?.Invoke(lifePlayer);
-        }
         if (other.gameObject.CompareTag("PortalFreeWorld"))
+        {
+            SceneManager.LoadScene("Level2Destroyed_city");
+            Destroy(gameObject);
+        }
+        if (other.gameObject.CompareTag("PortalSpecialTargets"))
+        {
+            SceneManager.LoadScene("Level3BaseMission");
+            Destroy(gameObject);
+        } 
+        if (other.gameObject.CompareTag("ProjectorInfo"))
             {
-                SceneManager.LoadScene("Level2Destroyed_city");
-                Destroy(gameObject);
-            }
+                isCloseProjector=false;
+                onFarAwayProjector?.Invoke();
+            }   
     } 
+    private void IsCloseProjector(){
+        if(isCloseProjector && Input.GetKeyDown(KeyCode.E)){
+            onPressE?.Invoke();
+        }
+    }
     private void ReloadAnim(){
         animPlayer.SetBool("isReload", GunCtrl.GetReloadFlag());
     }
@@ -297,4 +306,21 @@ public class PlayerCharacterController : MonoBehaviour
         CamerasController.onCameraChange -= onCamerasChangesHandler;
     }
     
+    private void OnEscClick(){
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            string levelName = SceneManager.GetActiveScene().name;
+            if(levelName=="Level3BaseMission" || levelName=="Level2Destroyed_city"){
+               SceneManager.LoadScene("Level1Present"); 
+            } 
+            if(levelName=="Level1Present"){
+                #if UNITY_EDITOR
+                    UnityEditor.EditorApplication.isPlaying = false;
+                #else
+                    Application.Quit();
+                #endif
+            }
+            
+        }
+    }
 }

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -28,6 +29,9 @@ public class GameManager : MonoBehaviour
     {
         PlayerCharacterController.onDeath+= GameOver;
     }
+    void Update(){
+        OnEscClick();
+    }
     private void GameOver()
     {
         scoreInstanciate = 0;
@@ -47,6 +51,23 @@ public class GameManager : MonoBehaviour
     public static int GetScore()
     {
         return instance.scoreInstanciate;
+    }
+    private void OnEscClick(){
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            string levelName = SceneManager.GetActiveScene().name;
+            if(levelName=="Level3BaseMission" || levelName=="Level2Destroyed_city"){
+               SceneManager.LoadScene("Level1Present"); 
+            } 
+            if(levelName=="Level1Present"){
+                #if UNITY_EDITOR
+                    UnityEditor.EditorApplication.isPlaying = false;
+                #else
+                    Application.Quit();
+                #endif
+            }
+            
+        }
     }
     
 }

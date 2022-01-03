@@ -5,36 +5,36 @@ using UnityEngine;
 public class AlienEnemy : MonoBehaviour
 {
     private float lifeEnemy;
-    private float armorEnemy;
+    protected float armorEnemy;
     
     
     [SerializeField] protected AlienData myData;
     protected Rigidbody rbEnemy;
-    [SerializeField] private Animator animEnemy;
-    private GameObject player;
+    [SerializeField] protected Animator animEnemy;
+    protected GameObject player;
 
     protected bool isAttack = false;
     protected bool isRun = false;
     protected bool isLeader =false;
 
     // Variables para Patrullaje
-    [SerializeField] Transform[] waypoints;
+    [SerializeField] protected Transform[] waypoints;
     [SerializeField] protected float speedPatrol = 5;
     [SerializeField] protected float rotationSpeed= 2;
-    [SerializeField] float minimumDistance = 1;
+    [SerializeField] protected float minimumDistance = 1;
     [SerializeField] protected GameObject character;
-    [SerializeField] float rangeOfView = 15;
-    private float attackingRangeOfView;
-    private bool iSeeTheCharacter = false;
-    private int currentIndex = 0;
-    private bool goBack = false;
+    [SerializeField] protected float rangeOfView = 15;
+    protected float attackingRangeOfView;
+    protected bool iSeeTheCharacter = false;
+    protected int currentIndex = 0;
+    protected bool goBack = false;
     protected bool isPatrolling = true;
     
-    private float aproachMagnitud=1000;
-    private bool flagAttack = false;
-    [SerializeField] float timeAttack = 2;
-    private float timeAttacking;
-
+    protected float aproachMagnitud=1000;
+    protected bool flagAttack = false;
+    [SerializeField] protected float timeAttack = 4f;
+    protected float timeAttacking;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -55,39 +55,37 @@ public class AlienEnemy : MonoBehaviour
         animEnemy.SetBool("isPatrolling", isPatrolling);
     }
 
-    private void FixedUpdate()
+    public virtual void FixedUpdate()
     {
-        if (Vector3.Distance(transform.position, character.transform.position) <= rangeOfView)
-        {
-            iSeeTheCharacter = true;
-            rangeOfView = attackingRangeOfView;
-        }
-        else
-        {
-            iSeeTheCharacter = false;
-        }
-        if (iSeeTheCharacter)
-        {
-            // ChaseCharacter();
-            HuntLookDied();
-            
-        }
-        else
-        {
-            Patrol();
-        }
-
-        // --------------------
-        // HuntLookDied();
+        if (player)
+            {
+                if (Vector3.Distance(transform.position, character.transform.position) <= rangeOfView)
+                {
+                    iSeeTheCharacter = true;
+                    rangeOfView = attackingRangeOfView;
+                }
+                else
+                {
+                    iSeeTheCharacter = false;
+                }
+                Debug.Log("i see the character: "+ iSeeTheCharacter);
+                if (iSeeTheCharacter)
+                {
+                    HuntLookDied();
+                }
+                else
+                {
+                    Patrol();
+                }
+            }
     }
-    private void Patrol()
+    public virtual void Patrol()
     {
         isPatrolling = true;
         isRun = false;
         isAttack = false;
         Vector3 deltaVector = waypoints[currentIndex].position - transform.position;
         Vector3 direction = deltaVector.normalized;
-
         transform.forward = Vector3.Lerp(transform.forward, direction, rotationSpeed * Time.deltaTime);
 
         transform.position += transform.forward * speedPatrol * Time.deltaTime;
@@ -126,26 +124,20 @@ public class AlienEnemy : MonoBehaviour
         }
         Gizmos.DrawWireSphere(transform.position, rangeOfView);
     }
-    // -------------------------------------
+   
 
-    private void HuntLookDied(){
+    public virtual void HuntLookDied(){
         Vector3 direction = GetPlayerDirection();
         isPatrolling = false;
-        lifeEnemy -= Time.deltaTime;
-        if(lifeEnemy > 0){
-            LookAtPlayer();
-            if(aproachMagnitud<direction.magnitude){
-                rbEnemy.velocity= direction.normalized*myData.Speed;
-                aproachMagnitud = direction.magnitude;
-            }else{
-                MoveToward();
-                aproachMagnitud = direction.magnitude;
-            }
-            
+        LookAtPlayer();
+        if(aproachMagnitud<direction.magnitude){
+            rbEnemy.velocity= direction.normalized*myData.Speed;
+            aproachMagnitud = direction.magnitude;
         }else{
-            Destroy(gameObject);
+            MoveToward();
+            aproachMagnitud = direction.magnitude;
         }
-        
+    
     }
     
     public virtual void MoveToward(){
@@ -175,7 +167,7 @@ public class AlienEnemy : MonoBehaviour
             }
         }
     }
-    private void LookAtPlayer(){
+    protected void LookAtPlayer(){
         Vector3 direction = GetPlayerDirection();
         Vector3 newDirection = new Vector3(direction.x,0,direction.z);
         Quaternion newRotation = Quaternion.LookRotation(newDirection);

@@ -36,6 +36,15 @@ public class LandingController : MonoBehaviour
     public void OnClickPlay()
     {
         Debug.Log("A JUGAR!!");
-        SceneManager.LoadScene("Level1");
+        SceneManager.LoadScene("Level1Present");
+    }
+    public void OnClickQuit()
+    {
+        Debug.Log("Salir");
+        #if UNITY_EDITOR
+            UnityEditor.EditorApplication.isPlaying = false;
+        #else
+            Application.Quit();
+        #endif
     }
 }
